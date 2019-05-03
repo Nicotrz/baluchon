@@ -15,7 +15,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var localConditionsLabel: UILabel!
     @IBOutlet weak var destinationTemperatureLabel: UILabel!
     @IBOutlet weak var destinationConditionsLabel: UILabel!
-    
 
     @IBAction func refreshButtonPressed(_ sender: Any) {
     }

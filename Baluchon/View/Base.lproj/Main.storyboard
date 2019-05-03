@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Backpack" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-bm-joa">
-                                <rect key="frame" x="5.5" y="40" width="309" height="155.00000000000011"/>
+                                <rect key="frame" x="5.5" y="40" width="309" height="155"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="309" id="MvK-iZ-jfW"/>
                                     <constraint firstAttribute="height" constant="155" id="nIz-GN-1Pp"/>
@@ -140,7 +140,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Backpack" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-Gq-cQn">
-                                <rect key="frame" x="5.5" y="40" width="309" height="155.00000000000011"/>
+                                <rect key="frame" x="5.5" y="40" width="309" height="155"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="155" id="QSW-1c-OwK"/>
                                     <constraint firstAttribute="width" constant="309" id="ocI-U0-eUx"/>
@@ -169,7 +169,10 @@
                                 <rect key="frame" x="20" y="304" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                <connections>
+                                    <action selector="userPressedGoOnKeyboard:" destination="5gv-gB-J2X" eventType="primaryActionTriggered" id="kML-7r-wyp"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Mi-Og-Tdw">
                                 <rect key="frame" x="24.5" y="404" width="271.5" height="107.5"/>
@@ -243,7 +246,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Backpack" translatesAutoresizingMaskIntoConstraints="NO" id="LWl-wl-0t7">
-                                <rect key="frame" x="5.5" y="40" width="309" height="155.00000000000011"/>
+                                <rect key="frame" x="5.5" y="40" width="309" height="155"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="155" id="TDq-I0-3un"/>
                                     <constraint firstAttribute="width" constant="309" id="yY3-G0-jUq"/>
@@ -272,8 +275,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NF-vY-LN4">
+                                <rect key="frame" x="85" y="339" width="150" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.10264518290000001" blue="0.081111775410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="dUu-Qz-WSe"/>
+                                </constraints>
+                                <state key="normal" title="Convertir">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedConvert:" destination="3Fk-Us-GMO" eventType="touchUpInside" id="UBH-1X-67c"/>
+                                    <action selector="userPressedTranslate:" destination="5gv-gB-J2X" eventType="touchUpInside" id="ihZ-vM-MhE"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gFy-BX-JLO">
-                                <rect key="frame" x="60" y="364" width="200.5" height="137.5"/>
+                                <rect key="frame" x="60" y="374" width="200.5" height="137.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Résultat:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lR-T0-1Iz">
                                         <rect key="frame" x="0.0" y="0.0" width="200.5" height="77.5"/>
@@ -293,18 +310,20 @@
                         <color key="backgroundColor" red="0.96974819898605347" green="0.8175322413444519" blue="0.43912738561630249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="gFy-BX-JLO" firstAttribute="top" secondItem="Hkn-KG-D2b" secondAttribute="bottom" constant="30" id="1y0-0x-eWK"/>
                             <constraint firstItem="GpK-NC-QP2" firstAttribute="trailing" secondItem="Hkn-KG-D2b" secondAttribute="trailing" constant="20" id="578-Dp-TWE"/>
                             <constraint firstItem="Hkn-KG-D2b" firstAttribute="leading" secondItem="GpK-NC-QP2" secondAttribute="leading" constant="20" id="6Ek-4K-3nb"/>
                             <constraint firstItem="gFy-BX-JLO" firstAttribute="centerX" secondItem="Fj9-LB-KrP" secondAttribute="centerX" id="Jdb-c0-V23"/>
                             <constraint firstItem="GpK-NC-QP2" firstAttribute="trailing" secondItem="xSw-ah-cbF" secondAttribute="trailing" constant="20" id="LIt-mC-LTW"/>
                             <constraint firstItem="7qQ-AO-ATa" firstAttribute="centerX" secondItem="Fj9-LB-KrP" secondAttribute="centerX" id="SSe-Xv-Unj"/>
+                            <constraint firstItem="1NF-vY-LN4" firstAttribute="top" secondItem="Hkn-KG-D2b" secondAttribute="bottom" constant="5" id="Yxw-Xr-P4G"/>
                             <constraint firstItem="LWl-wl-0t7" firstAttribute="centerX" secondItem="Fj9-LB-KrP" secondAttribute="centerX" id="by0-jl-lI6"/>
                             <constraint firstItem="LWl-wl-0t7" firstAttribute="top" secondItem="GpK-NC-QP2" secondAttribute="top" constant="20" id="fQc-lt-5dS"/>
                             <constraint firstItem="Hkn-KG-D2b" firstAttribute="top" secondItem="xSw-ah-cbF" secondAttribute="bottom" constant="10" id="h42-MZ-9nD"/>
+                            <constraint firstItem="1NF-vY-LN4" firstAttribute="centerX" secondItem="Fj9-LB-KrP" secondAttribute="centerX" id="m5c-8j-yPD"/>
                             <constraint firstItem="xSw-ah-cbF" firstAttribute="leading" secondItem="GpK-NC-QP2" secondAttribute="leading" constant="20" id="mDz-ts-QoF"/>
                             <constraint firstItem="xSw-ah-cbF" firstAttribute="top" secondItem="7qQ-AO-ATa" secondAttribute="bottom" constant="20" id="pdo-HG-4IB"/>
                             <constraint firstItem="7qQ-AO-ATa" firstAttribute="top" secondItem="LWl-wl-0t7" secondAttribute="bottom" constant="10" id="uDD-mK-hMP"/>
+                            <constraint firstItem="gFy-BX-JLO" firstAttribute="top" secondItem="1NF-vY-LN4" secondAttribute="bottom" constant="5" id="wYY-kJ-bFa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GpK-NC-QP2"/>
                         <connections>
@@ -314,11 +333,15 @@
                     <tabBarItem key="tabBarItem" title="Change" image="change_icon" selectedImage="change_icon" id="dmM-o0-ntl"/>
                     <connections>
                         <outlet property="numberToConvertTextField" destination="2Qh-pu-LzZ" id="fca-Cj-KPg"/>
-                        <outlet property="resultTextField" destination="dnb-p1-7Mr" id="gZl-Lt-6qB"/>
+                        <outlet property="resultLabel" destination="dnb-p1-7Mr" id="BJs-Mo-KG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nC8-B7-Ivx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="TK3-75-Vsz"/>
+                <tapGestureRecognizer id="TK3-75-Vsz">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="3Fk-Us-GMO" id="lXn-6j-Fss"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="531.8840579710145" y="-101.11607142857143"/>
         </scene>

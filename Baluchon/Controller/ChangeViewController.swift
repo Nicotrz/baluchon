@@ -9,12 +9,15 @@
 import UIKit
 
 class ChangeViewController: UIViewController {
-    
     @IBOutlet weak var numberToConvertTextField: UITextField!
-    @IBOutlet weak var resultTextField: UILabel!
-    
+    @IBOutlet weak var resultLabel: UILabel!
 
     @IBAction func dismissKeyboard(_ sender: Any) {
+        numberToConvertTextField.resignFirstResponder()
     }
 
+    @IBAction func pressedConvert(_ sender: Any) {
+        let toConvert = Double(numberToConvertTextField.text!)!
+        resultLabel.text = String(ChangeService.shared.convertCurrency(numberToConvert: toConvert))
+    }
 }

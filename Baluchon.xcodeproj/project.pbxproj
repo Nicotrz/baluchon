@@ -14,7 +14,24 @@
 		069E2E27227C7CAD004FA0F7 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E26227C7CAD004FA0F7 /* WeatherViewController.swift */; };
 		069E2E29227C7CC9004FA0F7 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E28227C7CC9004FA0F7 /* ChangeViewController.swift */; };
 		069E2E2B227C7CDC004FA0F7 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E2A227C7CDC004FA0F7 /* TranslateViewController.swift */; };
+		069E2E33227CC1CC004FA0F7 /* ChangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E32227CC1CC004FA0F7 /* ChangeService.swift */; };
+		069E2E49227CC6EF004FA0F7 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E48227CC6EF004FA0F7 /* Rate.swift */; };
+		069E2E6F227CCBFF004FA0F7 /* ChangeRate.json in Resources */ = {isa = PBXBuildFile; fileRef = 069E2E42227CC2E7004FA0F7 /* ChangeRate.json */; };
+		069E2E70227CCC02004FA0F7 /* FakeChangeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E44227CC34E004FA0F7 /* FakeChangeData.swift */; };
+		069E2E71227CCC05004FA0F7 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E46227CC4B6004FA0F7 /* URLSessionFake.swift */; };
+		069E2E75227CCD9D004FA0F7 /* ChangeServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E74227CCD9D004FA0F7 /* ChangeServiceTestCase.swift */; };
+		069E2E77227CD64E004FA0F7 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 069E2E76227CD64E004FA0F7 /* keys.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		069E2E69227CCBEC004FA0F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 069E2E09227C576B004FA0F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 069E2E10227C576B004FA0F7;
+			remoteInfo = Baluchon;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		069E2E11227C576B004FA0F7 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +43,26 @@
 		069E2E26227C7CAD004FA0F7 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		069E2E28227C7CC9004FA0F7 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		069E2E2A227C7CDC004FA0F7 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		069E2E32227CC1CC004FA0F7 /* ChangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeService.swift; sourceTree = "<group>"; };
+		069E2E42227CC2E7004FA0F7 /* ChangeRate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChangeRate.json; sourceTree = "<group>"; };
+		069E2E44227CC34E004FA0F7 /* FakeChangeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeChangeData.swift; sourceTree = "<group>"; };
+		069E2E46227CC4B6004FA0F7 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		069E2E48227CC6EF004FA0F7 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		069E2E64227CCBEB004FA0F7 /* BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		069E2E68227CCBEC004FA0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		069E2E74227CCD9D004FA0F7 /* ChangeServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeServiceTestCase.swift; sourceTree = "<group>"; };
+		069E2E76227CD64E004FA0F7 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		069E2E0E227C576B004FA0F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		069E2E61227CCBEB004FA0F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				069E2E13227C576B004FA0F7 /* Baluchon */,
+				069E2E39227CC29F004FA0F7 /* BaluchonTests */,
 				069E2E12227C576B004FA0F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				069E2E11227C576B004FA0F7 /* Baluchon.app */,
+				069E2E64227CCBEB004FA0F7 /* BaluchonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +93,7 @@
 		069E2E13227C576B004FA0F7 /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
+				069E2E76227CD64E004FA0F7 /* keys.plist */,
 				069E2E2E227C7CFC004FA0F7 /* Controller */,
 				069E2E2D227C7CF7004FA0F7 /* View */,
 				069E2E2C227C7CF1004FA0F7 /* Model */,
@@ -70,6 +106,8 @@
 		069E2E2C227C7CF1004FA0F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				069E2E32227CC1CC004FA0F7 /* ChangeService.swift */,
+				069E2E48227CC6EF004FA0F7 /* Rate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +132,18 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		069E2E39227CC29F004FA0F7 /* BaluchonTests */ = {
+			isa = PBXGroup;
+			children = (
+				069E2E42227CC2E7004FA0F7 /* ChangeRate.json */,
+				069E2E44227CC34E004FA0F7 /* FakeChangeData.swift */,
+				069E2E46227CC4B6004FA0F7 /* URLSessionFake.swift */,
+				069E2E68227CCBEC004FA0F7 /* Info.plist */,
+				069E2E74227CCD9D004FA0F7 /* ChangeServiceTestCase.swift */,
+			);
+			path = BaluchonTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,6 +154,7 @@
 				069E2E0D227C576B004FA0F7 /* Sources */,
 				069E2E0E227C576B004FA0F7 /* Frameworks */,
 				069E2E0F227C576B004FA0F7 /* Resources */,
+				069E2E31227CBE00004FA0F7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -113,6 +164,24 @@
 			productName = Baluchon;
 			productReference = 069E2E11227C576B004FA0F7 /* Baluchon.app */;
 			productType = "com.apple.product-type.application";
+		};
+		069E2E63227CCBEB004FA0F7 /* BaluchonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 069E2E6B227CCBEC004FA0F7 /* Build configuration list for PBXNativeTarget "BaluchonTests" */;
+			buildPhases = (
+				069E2E60227CCBEB004FA0F7 /* Sources */,
+				069E2E61227CCBEB004FA0F7 /* Frameworks */,
+				069E2E62227CCBEB004FA0F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				069E2E6A227CCBEC004FA0F7 /* PBXTargetDependency */,
+			);
+			name = BaluchonTests;
+			productName = BaluchonTests;
+			productReference = 069E2E64227CCBEB004FA0F7 /* BaluchonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -126,6 +195,10 @@
 				TargetAttributes = {
 					069E2E10227C576B004FA0F7 = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					069E2E63227CCBEB004FA0F7 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 069E2E10227C576B004FA0F7;
 					};
 				};
 			};
@@ -143,6 +216,7 @@
 			projectRoot = "";
 			targets = (
 				069E2E10227C576B004FA0F7 /* Baluchon */,
+				069E2E63227CCBEB004FA0F7 /* BaluchonTests */,
 			);
 		};
 /* End PBXProject section */
@@ -152,13 +226,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				069E2E77227CD64E004FA0F7 /* keys.plist in Resources */,
 				069E2E1F227C576C004FA0F7 /* LaunchScreen.storyboard in Resources */,
 				069E2E1C227C576C004FA0F7 /* Assets.xcassets in Resources */,
 				069E2E1A227C576B004FA0F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		069E2E62227CCBEB004FA0F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				069E2E6F227CCBFF004FA0F7 /* ChangeRate.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		069E2E31227CBE00004FA0F7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		069E2E0D227C576B004FA0F7 /* Sources */ = {
@@ -166,13 +269,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				069E2E29227C7CC9004FA0F7 /* ChangeViewController.swift in Sources */,
+				069E2E33227CC1CC004FA0F7 /* ChangeService.swift in Sources */,
 				069E2E2B227C7CDC004FA0F7 /* TranslateViewController.swift in Sources */,
+				069E2E49227CC6EF004FA0F7 /* Rate.swift in Sources */,
 				069E2E15227C576B004FA0F7 /* AppDelegate.swift in Sources */,
 				069E2E27227C7CAD004FA0F7 /* WeatherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		069E2E60227CCBEB004FA0F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				069E2E70227CCC02004FA0F7 /* FakeChangeData.swift in Sources */,
+				069E2E75227CCD9D004FA0F7 /* ChangeServiceTestCase.swift in Sources */,
+				069E2E71227CCC05004FA0F7 /* URLSessionFake.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		069E2E6A227CCBEC004FA0F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 069E2E10227C576B004FA0F7 /* Baluchon */;
+			targetProxy = 069E2E69227CCBEC004FA0F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		069E2E18227C576B004FA0F7 /* Main.storyboard */ = {
@@ -346,6 +469,46 @@
 			};
 			name = Release;
 		};
+		069E2E6C227CCBEC004FA0F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GG5ZRH6UQF;
+				INFOPLIST_FILE = BaluchonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NS.BaluchonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baluchon.app/Baluchon";
+			};
+			name = Debug;
+		};
+		069E2E6D227CCBEC004FA0F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GG5ZRH6UQF;
+				INFOPLIST_FILE = BaluchonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NS.BaluchonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baluchon.app/Baluchon";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,6 +526,15 @@
 			buildConfigurations = (
 				069E2E24227C576C004FA0F7 /* Debug */,
 				069E2E25227C576C004FA0F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		069E2E6B227CCBEC004FA0F7 /* Build configuration list for PBXNativeTarget "BaluchonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				069E2E6C227CCBEC004FA0F7 /* Debug */,
+				069E2E6D227CCBEC004FA0F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

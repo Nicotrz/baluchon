@@ -7,27 +7,79 @@
 //
 
 import XCTest
+@testable import Baluchon
 
 class ChangeServiceTestCase: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGetChangeShouldPostFailedCallbackIfError() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(data: nil, response: nil, error: FakeChangeData.error))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.getChangeRate { (success, rate) in
+            XCTAssertFalse(success)
+            XCTAssertNil(rate)
+            expectaction.fulfill()
         }
+        wait(for: [expectaction], timeout: 0.01)
     }
 
+    func testGetChangeShouldPostFailedCallbackIfNoData() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(data: nil, response: nil, error: nil))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.getChangeRate { (success, rate) in
+            XCTAssertFalse(success)
+            XCTAssertNil(rate)
+            expectaction.fulfill()
+        }
+        wait(for: [expectaction], timeout: 0.01)
+    }
+
+    func testGetChangeShouldPostFailedCallbackIfIncorrectResponse() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(
+                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseKO, error: nil))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.getChangeRate { (success, rate) in
+            XCTAssertFalse(success)
+            XCTAssertNil(rate)
+            expectaction.fulfill()
+        }
+        wait(for: [expectaction], timeout: 0.01)
+    }
+
+    func testGetChangeShouldPostFailedCallbackIfIncorrectData() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(
+                data: FakeChangeData.changeIncorrectData, response: FakeChangeData.responseOK, error: nil))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.getChangeRate { (success, rate) in
+            XCTAssertFalse(success)
+            XCTAssertNil(rate)
+            expectaction.fulfill()
+        }
+        wait(for: [expectaction], timeout: 0.01)
+    }
+
+    func testGetChangeShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+        // Given
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(
+                data: FakeChangeData.changeCorrectData,
+                response: FakeChangeData.responseOK,
+                error: nil))
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        changeService.getChangeRate { (success, change) in
+            // Then
+            let date = "2019-05-03"
+            let USD = 1.119301
+            XCTAssertTrue(success)
+            XCTAssertNotNil(change)
+            XCTAssertEqual(date, change!.date)
+            XCTAssertEqual(USD, change!.rates["USD"])
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
 }

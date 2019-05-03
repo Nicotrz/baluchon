@@ -9,15 +9,20 @@
 import UIKit
 
 class TranslateViewController: UIViewController {
-    
+
     @IBOutlet weak var translateTextField: UITextField!
     @IBOutlet weak var translateButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
-    
+
     @IBAction func userPressedTranslate(_ sender: Any) {
     }
 
     @IBAction func dismissKeyboard(_ sender: Any) {
+        translateTextField.resignFirstResponder()
     }
-    
+
+    @IBAction func userPressedGoOnKeyboard(_ sender: Any) {
+        dismissKeyboard(sender)
+    }
+
 }
