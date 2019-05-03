@@ -1,0 +1,69 @@
+
+/* Class = "UITextField"; placeholder = "0"; ObjectID = "2Qh-pu-LzZ"; */
+"2Qh-pu-LzZ.placeholder" = "0";
+
+/* Class = "UILabel"; text = "New York"; ObjectID = "4DB-Sd-vnC"; */
+"4DB-Sd-vnC.text" = "New York";
+
+/* Class = "UILabel"; text = "Taux de change"; ObjectID = "7qQ-AO-ATa"; */
+"7qQ-AO-ATa.text" = "Taux de change";
+
+/* Class = "UILabel"; text = "Résultat:"; ObjectID = "9lR-T0-1Iz"; */
+"9lR-T0-1Iz.text" = "Résultat:";
+
+/* Class = "UILabel"; text = "Résultat:"; ObjectID = "BqW-w5-gWz"; */
+"BqW-w5-gWz.text" = "Résultat:";
+
+/* Class = "UITextField"; placeholder = "Mes fleurs sont magnifiques"; ObjectID = "FVR-Q1-5cz"; */
+"FVR-Q1-5cz.placeholder" = "Mes fleurs sont magnifiques";
+
+/* Class = "UITabBarItem"; title = "Traduction"; ObjectID = "G1b-kv-umB"; */
+"G1b-kv-umB.title" = "Traduction";
+
+/* Class = "UILabel"; text = "Your flowers are beautiful"; ObjectID = "Ixg-tc-AmD"; */
+"Ixg-tc-AmD.text" = "Your flowers are beautiful";
+
+/* Class = "UILabel"; text = "Bruxelles"; ObjectID = "N47-9j-9Es"; */
+"N47-9j-9Es.text" = "Bruxelles";
+
+/* Class = "UILabel"; text = "€"; ObjectID = "Obq-vh-ejC"; */
+"Obq-vh-ejC.text" = "€";
+
+/* Class = "UILabel"; text = "Météo"; ObjectID = "PnM-1M-5XW"; */
+"PnM-1M-5XW.text" = "Météo";
+
+/* Class = "UILabel"; text = "Nuageux"; ObjectID = "RMc-YG-HnT"; */
+"RMc-YG-HnT.text" = "Nuageux";
+
+/* Class = "UILabel"; text = "Phrase à traduire:"; ObjectID = "ShU-3M-DwD"; */
+"ShU-3M-DwD.text" = "Phrase à traduire:";
+
+/* Class = "UIButton"; normalTitle = "Raffraichir"; ObjectID = "apK-0I-dOk"; */
+"apK-0I-dOk.normalTitle" = "Raffraichir";
+
+/* Class = "UITabBarItem"; title = "Météo"; ObjectID = "bts-bX-bOw"; */
+"bts-bX-bOw.title" = "Météo";
+
+/* Class = "UITabBarItem"; title = "Change"; ObjectID = "dmM-o0-ntl"; */
+"dmM-o0-ntl.title" = "Change";
+
+/* Class = "UILabel"; text = "0 $"; ObjectID = "dnb-p1-7Mr"; */
+"dnb-p1-7Mr.text" = "0 $";
+
+/* Class = "UILabel"; text = "0°C"; ObjectID = "egx-FW-h9O"; */
+"egx-FW-h9O.text" = "0°C";
+
+/* Class = "UILabel"; text = "Nuageux"; ObjectID = "kFS-05-R2G"; */
+"kFS-05-R2G.text" = "Nuageux";
+
+/* Class = "UILabel"; text = "Traduction"; ObjectID = "xDi-Zz-Rpv"; */
+"xDi-Zz-Rpv.text" = "Traduction";
+
+/* Class = "UILabel"; text = "Montant à convertir:"; ObjectID = "xSw-ah-cbF"; */
+"xSw-ah-cbF.text" = "Montant à convertir:";
+
+/* Class = "UIButton"; normalTitle = "Traduire"; ObjectID = "xja-Ci-45F"; */
+"xja-Ci-45F.normalTitle" = "Traduire";
+
+/* Class = "UILabel"; text = "0°C"; ObjectID = "zMt-Fq-RGN"; */
+"zMt-Fq-RGN.text" = "0°C";
