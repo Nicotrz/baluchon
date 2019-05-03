@@ -13,7 +13,7 @@
         <!--Météo-->
         <scene sceneID="Kng-pE-C6X">
             <objects>
-                <viewController id="S3n-5u-DEh" sceneMemberID="viewController">
+                <viewController id="S3n-5u-DEh" customClass="WeatherViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Mc-LE-E9u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DB-Sd-vnC">
+                                <rect key="frame" x="98.5" y="360.5" width="123" height="46.5"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="pVu-Wd-w0T">
                                 <rect key="frame" x="20" y="319.5" width="280" height="31"/>
                                 <subviews>
@@ -55,7 +61,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apK-0I-dOk">
-                                <rect key="frame" x="85" y="360.5" width="150" height="30"/>
+                                <rect key="frame" x="85" y="469" width="150" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.10264518290000001" blue="0.081111775410000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="vqX-E9-Qu2"/>
@@ -63,25 +69,57 @@
                                 <state key="normal" title="Raffraichir">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="S3n-5u-DEh" eventType="touchUpInside" id="Zqy-pX-DeS"/>
+                                </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="AXV-79-SMM">
+                                <rect key="frame" x="20" y="417" width="280" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egx-FW-h9O">
+                                        <rect key="frame" x="0.0" y="0.0" width="95.5" height="31"/>
+                                        <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuageux" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kFS-05-R2G">
+                                        <rect key="frame" x="184.5" y="0.0" width="95.5" height="31"/>
+                                        <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.96974819898605347" green="0.8175322413444519" blue="0.43912738561630249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="PnM-1M-5XW" firstAttribute="centerX" secondItem="8Mc-LE-E9u" secondAttribute="centerX" id="1zB-KY-tLx"/>
                             <constraint firstItem="gqu-bm-joa" firstAttribute="top" secondItem="nKQ-Lc-Gft" secondAttribute="top" constant="20" id="AXF-Rj-loX"/>
                             <constraint firstItem="pVu-Wd-w0T" firstAttribute="leading" secondItem="nKQ-Lc-Gft" secondAttribute="leading" constant="20" id="HVD-uJ-qfQ"/>
+                            <constraint firstItem="nKQ-Lc-Gft" firstAttribute="trailing" secondItem="AXV-79-SMM" secondAttribute="trailing" constant="20" id="IBM-6f-Whg"/>
                             <constraint firstItem="PnM-1M-5XW" firstAttribute="top" secondItem="gqu-bm-joa" secondAttribute="bottom" constant="10" id="Kgp-VI-6tA"/>
                             <constraint firstItem="N47-9j-9Es" firstAttribute="top" secondItem="PnM-1M-5XW" secondAttribute="bottom" constant="20" id="URg-gI-9cZ"/>
-                            <constraint firstItem="apK-0I-dOk" firstAttribute="top" secondItem="pVu-Wd-w0T" secondAttribute="bottom" constant="10" id="WAe-e4-Jdp"/>
                             <constraint firstItem="nKQ-Lc-Gft" firstAttribute="trailing" secondItem="pVu-Wd-w0T" secondAttribute="trailing" constant="20" id="cL8-sp-RJb"/>
+                            <constraint firstItem="4DB-Sd-vnC" firstAttribute="top" secondItem="pVu-Wd-w0T" secondAttribute="bottom" constant="10" id="hV6-Mm-2vR"/>
+                            <constraint firstItem="4DB-Sd-vnC" firstAttribute="centerX" secondItem="8Mc-LE-E9u" secondAttribute="centerX" id="hsN-G0-3F5"/>
                             <constraint firstItem="pVu-Wd-w0T" firstAttribute="top" secondItem="N47-9j-9Es" secondAttribute="bottom" constant="10" id="lD3-mD-7Bh"/>
                             <constraint firstItem="apK-0I-dOk" firstAttribute="centerX" secondItem="8Mc-LE-E9u" secondAttribute="centerX" id="llz-1u-YS1"/>
+                            <constraint firstItem="AXV-79-SMM" firstAttribute="top" secondItem="4DB-Sd-vnC" secondAttribute="bottom" constant="10" id="pMT-Tv-Xx4"/>
                             <constraint firstItem="N47-9j-9Es" firstAttribute="centerX" secondItem="8Mc-LE-E9u" secondAttribute="centerX" id="q9f-gx-P1a"/>
+                            <constraint firstItem="AXV-79-SMM" firstAttribute="leading" secondItem="nKQ-Lc-Gft" secondAttribute="leading" constant="20" id="uXw-Nb-95A"/>
                             <constraint firstItem="gqu-bm-joa" firstAttribute="centerX" secondItem="8Mc-LE-E9u" secondAttribute="centerX" id="umg-c2-7rJ"/>
+                            <constraint firstItem="nKQ-Lc-Gft" firstAttribute="bottom" secondItem="apK-0I-dOk" secondAttribute="bottom" constant="20" id="ziG-Of-eGQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nKQ-Lc-Gft"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Météo" image="weather_icon" id="bts-bX-bOw"/>
+                    <connections>
+                        <outlet property="destinationConditionsLabel" destination="kFS-05-R2G" id="huW-KO-csi"/>
+                        <outlet property="destinationTemperatureLabel" destination="egx-FW-h9O" id="GpF-13-fVz"/>
+                        <outlet property="localConditionsLabel" destination="RMc-YG-HnT" id="hg1-h9-8pH"/>
+                        <outlet property="localTemperatureLabel" destination="zMt-Fq-RGN" id="xXO-j8-Kbk"/>
+                        <outlet property="refreshButton" destination="apK-0I-dOk" id="1Ey-Aq-v4o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsH-Vb-xii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -90,7 +128,7 @@
         <!--Traduction-->
         <scene sceneID="P0c-cS-JTv">
             <objects>
-                <viewController id="5gv-gB-J2X" sceneMemberID="viewController">
+                <viewController id="5gv-gB-J2X" customClass="TranslateViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kyT-s6-68z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,6 +161,9 @@
                                 <state key="normal" title="Traduire">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="userPressedTranslate:" destination="5gv-gB-J2X" eventType="touchUpInside" id="Drv-Dj-KTw"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mes fleurs sont magnifiques" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FVR-Q1-5cz">
                                 <rect key="frame" x="20" y="304" width="280" height="30"/>
@@ -149,6 +190,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.96973699331283569" green="0.81360393762588501" blue="0.43520534038543701" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1Mi-Og-Tdw" firstAttribute="top" secondItem="xja-Ci-45F" secondAttribute="bottom" constant="30" id="1Qw-Vg-xTu"/>
                             <constraint firstItem="xja-Ci-45F" firstAttribute="top" secondItem="FVR-Q1-5cz" secondAttribute="bottom" constant="10" id="2Jb-Ze-Zhd"/>
@@ -166,17 +208,30 @@
                             <constraint firstItem="f8z-vT-evs" firstAttribute="trailing" secondItem="FVR-Q1-5cz" secondAttribute="trailing" constant="20" id="qa6-SA-tg8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f8z-vT-evs"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="R6d-wA-4qu" appends="YES" id="BEz-cw-VSU"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Traduction" image="translate_icon" selectedImage="translate_icon" id="G1b-kv-umB"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="Ixg-tc-AmD" id="xSJ-nD-PBL"/>
+                        <outlet property="translateButton" destination="xja-Ci-45F" id="E8G-z3-F5N"/>
+                        <outlet property="translateTextField" destination="FVR-Q1-5cz" id="2jL-ox-vtO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsm-sG-HF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="R6d-wA-4qu">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="5gv-gB-J2X" id="1oH-X0-T3P"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="532" y="548"/>
         </scene>
         <!--Change-->
         <scene sceneID="j5q-9J-jZq">
             <objects>
-                <viewController id="3Fk-Us-GMO" sceneMemberID="viewController">
+                <viewController id="3Fk-Us-GMO" customClass="ChangeViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fj9-LB-KrP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,6 +291,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.96974819898605347" green="0.8175322413444519" blue="0.43912738561630249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="gFy-BX-JLO" firstAttribute="top" secondItem="Hkn-KG-D2b" secondAttribute="bottom" constant="30" id="1y0-0x-eWK"/>
                             <constraint firstItem="GpK-NC-QP2" firstAttribute="trailing" secondItem="Hkn-KG-D2b" secondAttribute="trailing" constant="20" id="578-Dp-TWE"/>
@@ -251,10 +307,18 @@
                             <constraint firstItem="7qQ-AO-ATa" firstAttribute="top" secondItem="LWl-wl-0t7" secondAttribute="bottom" constant="10" id="uDD-mK-hMP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GpK-NC-QP2"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="TK3-75-Vsz" appends="YES" id="U6S-iT-tXj"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Change" image="change_icon" selectedImage="change_icon" id="dmM-o0-ntl"/>
+                    <connections>
+                        <outlet property="numberToConvertTextField" destination="2Qh-pu-LzZ" id="fca-Cj-KPg"/>
+                        <outlet property="resultTextField" destination="dnb-p1-7Mr" id="gZl-Lt-6qB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nC8-B7-Ivx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TK3-75-Vsz"/>
             </objects>
             <point key="canvasLocation" x="531.8840579710145" y="-101.11607142857143"/>
         </scene>
