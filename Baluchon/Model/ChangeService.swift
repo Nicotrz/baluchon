@@ -43,44 +43,35 @@ class ChangeService {
         return request
     }
 
-    private func getChangeRate(callback: @escaping (Bool, Rate?) -> Void) {
+    func refreshChangeRate(callback: @escaping (Bool, Rate?) -> Void) {
         let request = createChangeRequest()
-
         task?.cancel()
         task = changeSession.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
                     return
                 }
-
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     callback(false, nil)
                     return
                 }
-               print(response.statusCode)
                 guard let responseJSON = try? JSONDecoder().decode(Rate.self, from: data) else {
-                        callback(false, nil)
-                        return
+                    callback(false, nil)
+                    return
                 }
                 callback(true, responseJSON)
-                }
             }
-            task?.resume()
+         task?.resume()
     }
 
     func convertCurrency(numberToConvert: Double ) -> Double {
-            if ChangeService.rates == nil {
-                self.getChangeRate { (success, rates ) in
-                    if success {
-                        print("Success!")
-                        ChangeService.rates = rates
-                    }
-                }
+        guard let unwrappedRate = ChangeService.rates else {
+            return 0
         }
-      //  print(ChangeService.rates!.rates["USD"])
-        return (numberToConvert * 1.14433 )
-      //  return ( numberToConvert * ChangeService.rates!.rates["USD"]!)
+        guard let reference = unwrappedRate.rates["USD"] else {
+            return 0
+        }
+        return ( numberToConvert * reference )
     }
 
 }

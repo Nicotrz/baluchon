@@ -15,7 +15,7 @@ class ChangeServiceTestCase: XCTestCase {
         let changeService = ChangeService(
             changeSession: URLSessionFake(data: nil, response: nil, error: FakeChangeData.error))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
-        changeService.getChangeRate { (success, rate) in
+        changeService.refreshChangeRate { (success, rate) in
             XCTAssertFalse(success)
             XCTAssertNil(rate)
             expectaction.fulfill()
@@ -27,7 +27,7 @@ class ChangeServiceTestCase: XCTestCase {
         let changeService = ChangeService(
             changeSession: URLSessionFake(data: nil, response: nil, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
-        changeService.getChangeRate { (success, rate) in
+        changeService.refreshChangeRate { (success, rate) in
             XCTAssertFalse(success)
             XCTAssertNil(rate)
             expectaction.fulfill()
@@ -40,7 +40,7 @@ class ChangeServiceTestCase: XCTestCase {
             changeSession: URLSessionFake(
                 data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseKO, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
-        changeService.getChangeRate { (success, rate) in
+        changeService.refreshChangeRate { (success, rate) in
             XCTAssertFalse(success)
             XCTAssertNil(rate)
             expectaction.fulfill()
@@ -53,7 +53,7 @@ class ChangeServiceTestCase: XCTestCase {
             changeSession: URLSessionFake(
                 data: FakeChangeData.changeIncorrectData, response: FakeChangeData.responseOK, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
-        changeService.getChangeRate { (success, rate) in
+        changeService.refreshChangeRate { (success, rate) in
             XCTAssertFalse(success)
             XCTAssertNil(rate)
             expectaction.fulfill()
@@ -70,7 +70,7 @@ class ChangeServiceTestCase: XCTestCase {
                 error: nil))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        changeService.getChangeRate { (success, change) in
+        changeService.refreshChangeRate { (success, change) in
             // Then
             let date = "2019-05-03"
             let USD = 1.119301
