@@ -9,6 +9,7 @@
 import Foundation
 
 class ChangeService {
+
     static var shared = ChangeService()
     static var rates: Rate?
 
@@ -71,7 +72,8 @@ class ChangeService {
         guard let reference = unwrappedRate.rates["USD"] else {
             return 0
         }
-        return ( numberToConvert * reference )
+        let resultToSend = Double(round(100*numberToConvert*reference)/100)
+        return ( resultToSend )
     }
 
 }
