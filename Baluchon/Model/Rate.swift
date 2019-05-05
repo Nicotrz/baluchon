@@ -8,10 +8,16 @@
 
 import Foundation
 
+// Structure for the result of the changeRate json file
+// For an example, please check the ChangeRate.json
+// Example file available on BaluchonTests folder
+
 struct Rate: Decodable {
 
+    // Date of the update
     let date: String
 
+    // Same date but on european format
     var europeanFormatDate: String {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd"
@@ -21,5 +27,6 @@ struct Rate: Decodable {
         return outputFormatter.string(from: showDate!)
     }
 
+    // Dictionnary with [Currency: rate]
     let rates: [String: Double]
 }

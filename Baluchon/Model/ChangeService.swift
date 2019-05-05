@@ -10,24 +10,44 @@ import Foundation
 
 class ChangeService {
 
+    // MARK: Singleton Property
+    static var shared = ChangeService()
+
+    // MARK: Init methods
+
+    // Init private for Singleton
+    private init() {}
+
+    // init for testing purposes
+    init(changeSession: URLSession) {
+        self.changeSession = changeSession
+    }
+
+    // MARK: Enumeration
+
+    // Differents return of ErrorCase possibles
     enum ErrorCase {
         case requestSuccessfull
         case alreadyRefreshed
         case networkError
     }
 
+    // MARK: private properties
+
+    // The URL for the request
     private var requestURL = "http://data.fixer.io/api/latest?access_key="
 
-    static var shared = ChangeService()
+    // The task for the request
+    private var task: URLSessionDataTask?
 
+    // The session for the request
+    private var changeSession = URLSession(configuration: .default)
+
+    // The Rate object to collect current rates
     private var rates: Rate?
 
-    var ratesEnabled: Bool {
-        return rates != nil
-    }
-
-    private init() {}
-
+    // Retrieve the accessKey from the keys.plist file
+    // Please note: the software cannot work without it
     private var accessKey: String {
         guard let path = Bundle.main.path(forResource: "keys", ofType: "plist") else {
             return ""
@@ -40,12 +60,9 @@ class ChangeService {
             return ""
         }
         return resultKey
-        }
+    }
 
-    private var task: URLSessionDataTask?
-
-    private var changeSession = URLSession(configuration: .default)
-
+    // Retrieve the date of today and sending in back with yyyy-MM-dd format
     private var todayDate: String {
         let today = Date()
         let formatter = DateFormatter()
@@ -53,14 +70,21 @@ class ChangeService {
         return formatter.string(from: today)
     }
 
+    // Checking if the last update Date match today date
     private var areDataAlreadyUpdated: Bool {
         return todayDate == rates?.date
     }
 
-    init(changeSession: URLSession) {
-        self.changeSession = changeSession
+    // MARK: Public properties
+
+    // Are the rates enabled to use ?
+    var ratesEnabled: Bool {
+        return rates != nil
     }
 
+    // MARK: Private methods
+
+    // Creating the request from the URL with accessKey
     private func createChangeRequest() -> URLRequest {
         requestURL += "\(accessKey)"
         let changeUrl = URL(string: requestURL)!
@@ -69,6 +93,23 @@ class ChangeService {
         return request
     }
 
+    // Converting a Double number to a pretty number with the USD format
+    private func convertToClearNumber(toConvert number: Double) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        // localize to your grouping and decimal separator
+        currencyFormatter.locale = Locale(identifier: "en_US")
+        // We'll force unwrap with the !, if you've got defined data you may need more error checking
+        return currencyFormatter.string(from: NSNumber(value: number))!
+    }
+
+    // MARK: Public methods
+
+    // Refresh the ChangeRate. We need a closure on argument with:
+    // - Type of error for result purpose
+    // - String? contain the update date on european format
+    // This method send the result to the rates variable
     func refreshChangeRate(callback: @escaping (ErrorCase, String?) -> Void) {
         if areDataAlreadyUpdated {
             callback(.alreadyRefreshed, nil)
@@ -96,6 +137,10 @@ class ChangeService {
             task?.resume()
     }
 
+    // This method takes the numberToConvert
+    // And convert it to USD following the current rates
+    // It send the result back with a nice format
+    // Thanks to the convertToClearNumber private method
     func convertCurrency(numberToConvert: String ) -> String {
         let formatter = NumberFormatter()
         formatter.decimalSeparator = ","
@@ -110,6 +155,7 @@ class ChangeService {
             return ""
         }
         let resultToSend = Double(round(100*toConvert*reference)/100)
-        return ( String(resultToSend) )
+        return convertToClearNumber(toConvert: resultToSend)
     }
+
 }
