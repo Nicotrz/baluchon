@@ -60,26 +60,4 @@ class ChangeServiceTestCase: XCTestCase {
         }
         wait(for: [expectaction], timeout: 0.01)
     }
-
-    func testGetChangeShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
-        // Given
-        let changeService = ChangeService(
-            changeSession: URLSessionFake(
-                data: FakeChangeData.changeCorrectData,
-                response: FakeChangeData.responseOK,
-                error: nil))
-        // When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        changeService.refreshChangeRate { (success, change) in
-            // Then
-            let date = "2019-05-03"
-            let USD = 1.119301
-            XCTAssertTrue(success)
-            XCTAssertNotNil(change)
-            XCTAssertEqual(date, change!.date)
-            XCTAssertEqual(USD, change!.rates["USD"])
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
 }

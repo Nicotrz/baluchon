@@ -15,65 +15,53 @@ class ChangeViewController: UIViewController {
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var refreshDateLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
-    override func viewDidLoad() {
-        refreshRates()
-        super.viewDidLoad()
+
+    private var isTextFieldNotEmpty: Bool {
+        return !(numberToConvertTextField.text == "")
     }
+
     @IBAction func dismissKeyboard(_ sender: Any) {
         numberToConvertTextField.resignFirstResponder()
     }
 
     @IBAction func pressedConvert(_ sender: Any) {
         dismissKeyboard(sender)
-        guard checkIfTextFieldIsNotEmpty() else {
+        guard isTextFieldNotEmpty else {
             showAlert(message: "Veuillez introduire un montant")
             return
         }
-        let formatter = NumberFormatter()
-        formatter.decimalSeparator = ","
-        let numberFormated = formatter.number(from: self.numberToConvertTextField.text!)
-        guard let toConvert = numberFormated?.doubleValue else {
-            return
-        }
-            convertAndShowResult(toConvert: toConvert)
+        self.resultLabel.text =
+        "$\(ChangeService.shared.convertCurrency(numberToConvert: numberToConvertTextField.text!))"
     }
 
     @IBAction func pressRefresh(_ sender: Any) {
+        dismissKeyboard(sender)
         refreshRates()
     }
 
     private func refreshRates() {
         changeStatusLoadingInterface(activate: true)
-        ChangeService.shared.refreshChangeRate { (success, rates) in
-            DispatchQueue.main.async {
-                self.changeStatusLoadingInterface(activate: false)
-                guard success, let rates = rates else {
-                    self.showAlert(message: "Erreur de connexion")
-                    return
-                }
-                ChangeService.rates = rates
-                self.refreshDateLabel.text = self.changeDateFormat(date: ChangeService.rates?.date ?? "2000-01-01")
+        ChangeService.shared.refreshChangeRate { (errorCase, updateDate) in
+            switch errorCase {
+            case .alreadyRefreshed:
+                self.showAlert(message: "Les taux sont déjà à jour")
+            case .networkError:
+                self.showAlert(message: "Erreur de connexion")
+            case .requestSuccessfull:
+                self.refreshDateLabel.text = updateDate
             }
+            self.changeStatusLoadingInterface(activate: false)
         }
-    }
-
-    private func convertAndShowResult(toConvert: Double) {
-        self.resultLabel.text =
-        "$\(String(ChangeService.shared.convertCurrency(numberToConvert: toConvert)))"
     }
 
     private func changeStatusLoadingInterface(activate: Bool) {
-       convertButton.isHidden = activate
-        refreshButton.isHidden = activate
         loadingActivityIndicator.isHidden = !activate
-    }
-
-    private func checkIfTextFieldIsNotEmpty() -> Bool {
-        if numberToConvertTextField.text == "" {
-            return false
-        } else {
-        return true
+        refreshButton.isHidden = activate
+        guard ChangeService.shared.ratesEnabled else {
+            convertButton.isHidden = true
+            return
         }
+        convertButton.isHidden = activate
     }
 
     private func showAlert(message: String) {
@@ -81,14 +69,5 @@ class ChangeViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-    }
-
-    private func changeDateFormat(date: String) -> String {
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "yyyy-MM-dd"
-        let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = "dd/MM/YYYY"
-        let showDate = inputFormatter.date(from: date)
-        return outputFormatter.string(from: showDate!)
     }
 }
