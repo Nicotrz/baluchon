@@ -26,6 +26,7 @@ class ChangeViewController: UIViewController {
     }
 
     // Is the Input text field Valid?
+    // (not more than one coma and not more than 10 characters)
     private var isTextFieldValid: Bool {
         var comaCount = 0
         guard let textField = numberToConvertTextField.text else {

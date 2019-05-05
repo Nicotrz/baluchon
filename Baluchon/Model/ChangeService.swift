@@ -44,7 +44,8 @@ class ChangeService {
     private var changeSession = URLSession(configuration: .default)
 
     // The Rate object to collect current rates
-    private var rates: Rate?
+    //private var rates: Rate?
+    var rates: Rate?
 
     // Retrieve the accessKey from the keys.plist file
     // Please note: the software cannot work without it
@@ -64,7 +65,6 @@ class ChangeService {
 
     // Retrieve the date of today and sending in back with yyyy-MM-dd format
     private var todayDate: String {
-        let today = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: today)
@@ -81,6 +81,12 @@ class ChangeService {
     var ratesEnabled: Bool {
         return rates != nil
     }
+
+    // MARK: Public properties
+
+    // Contain the today date
+    // Set on public property so it can be changed for testing purpose
+    var today = Date()
 
     // MARK: Private methods
 
