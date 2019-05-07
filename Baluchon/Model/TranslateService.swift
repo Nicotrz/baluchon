@@ -71,6 +71,27 @@ class TranslateService {
         return resultToSend
     }
 
+    private func convertTextIntoAPrettyString(textToConvert: String) -> [Bool: String] {
+        var resultToSend = ""
+        guard let encodedData = textToConvert.data(using: .utf8) else {
+            return [false: ""]
+        }
+
+        let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+
+        do {
+            let attributedString = try NSAttributedString(
+                data: encodedData, options: attributedOptions, documentAttributes: nil)
+            resultToSend = attributedString.string
+        } catch {
+            return [false: ""]
+        }
+        return [true: resultToSend]
+    }
+
     // MARK: Public methods
 
     // Refresh the ChangeRate. We need a closure on argument with:
@@ -95,7 +116,13 @@ class TranslateService {
                     callback(false, nil)
                     return
                 }
-                callback(true, responseJSON.data.translations[0].translatedText )
+                let resultConvert = self.convertTextIntoAPrettyString(
+                    textToConvert: responseJSON.data.translations[0].translatedText)
+                guard resultConvert != [false: ""] else {
+                    callback(false, nil)
+                    return
+                }
+                callback(true, resultConvert[true])
             }
         }
         task?.resume()
