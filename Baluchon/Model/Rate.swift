@@ -15,7 +15,7 @@ import Foundation
 struct Rate: Decodable {
 
     // Date of the update
-    let date: String
+    var date: String
 
     // Same date but on european format
     var europeanFormatDate: String {

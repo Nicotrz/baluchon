@@ -11,6 +11,15 @@ import XCTest
 
 class ChangeServiceTestCase: XCTestCase {
 
+    override func setUp() {
+        ChangeService.shared.setUpShared()
+        super.setUp()
+    }
+
+    func testIsRatesEnabledShouldReturnFalseIfRatesAreNotRefreshed() {
+        XCTAssertFalse(ChangeService.shared.ratesEnabled)
+    }
+
     func testRefreshChangeShouldPostFailedCallbackIfError() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(data: nil, response: nil, error: FakeChangeData.error))
@@ -61,4 +70,49 @@ class ChangeServiceTestCase: XCTestCase {
         wait(for: [expectaction], timeout: 0.01)
     }
 
+    func testConvertCurrencyShouldSendBackCorrectAnswerIfRatesAreRefreshed() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(
+                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseOK, error: nil))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.refreshChangeRate { (errorCase, refreshDate) in
+            XCTAssertEqual(errorCase, .requestSuccessfull)
+            XCTAssertEqual(refreshDate, "06/05/2019")
+            expectaction.fulfill()
+        }
+        wait(for: [expectaction], timeout: 0.01)
+        XCTAssertEqual(ChangeService.shared.convertCurrency(numberToConvert: "1", currency: "USD"), "$1.12")
+    }
+
+    func testConvertInvalidNumberConvertCurrencyShouldSendBackEmptyString() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(
+                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseOK, error: nil))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.refreshChangeRate { (errorCase, refreshDate) in
+            XCTAssertEqual(errorCase, .requestSuccessfull)
+            XCTAssertEqual(refreshDate, "06/05/2019")
+            expectaction.fulfill()
+        }
+        wait(for: [expectaction], timeout: 0.01)
+        XCTAssertEqual(ChangeService.shared.convertCurrency(numberToConvert: "1,5,5", currency: "USD"), "")
+    }
+
+    func testConvertWhitoutRefreshRateFirstConvertCurrencyShouldSendBackEmptyString() {
+        XCTAssertEqual(ChangeService.shared.convertCurrency(numberToConvert: "1", currency: "USD"), "")
+    }
+
+    func testConvertWithSendingInvalidCurrencyShouldSendBackEmptyString() {
+        let changeService = ChangeService(
+            changeSession: URLSessionFake(
+                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseOK, error: nil))
+        let expectaction = XCTestExpectation(description: "Wait for queue change.")
+        changeService.refreshChangeRate { (errorCase, refreshDate) in
+            XCTAssertEqual(errorCase, .requestSuccessfull)
+            XCTAssertEqual(refreshDate, "06/05/2019")
+            expectaction.fulfill()
+        }
+        wait(for: [expectaction], timeout: 0.01)
+        XCTAssertEqual(ChangeService.shared.convertCurrency(numberToConvert: "1", currency: "TOTO"), "")
+    }
 }

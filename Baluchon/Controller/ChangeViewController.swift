@@ -56,8 +56,9 @@ class ChangeViewController: UIViewController {
             showAlert(message: "Veuillez introduire un montant valide")
             return
         }
-        self.resultLabel.text =
-        "\(ChangeService.shared.convertCurrency(numberToConvert: numberToConvertTextField.text!))"
+        let resultToSend = ChangeService.shared.convertCurrency(
+            numberToConvert: numberToConvertTextField.text!, currency: "USD")
+        self.resultLabel.text = "\(resultToSend)"
     }
 
     // When the user press the button to refresh the rates

@@ -45,7 +45,7 @@ class ChangeService {
 
     // The Rate object to collect current rates
     //private var rates: Rate?
-    var rates: Rate?
+    private var rates: Rate?
 
     // Retrieve the accessKey from the keys.plist file
     // Please note: the software cannot work without it
@@ -72,21 +72,18 @@ class ChangeService {
 
     // Checking if the last update Date match today date
     private var areDataAlreadyUpdated: Bool {
-        return todayDate == rates?.date
+        return todayDate == ChangeService.shared.rates?.date
     }
+
+    // Contain the today date
+    private var today = Date()
 
     // MARK: Public properties
 
     // Are the rates enabled to use ?
     var ratesEnabled: Bool {
-        return rates != nil
+        return ChangeService.shared.rates != nil
     }
-
-    // MARK: Public properties
-
-    // Contain the today date
-    // Set on public property so it can be changed for testing purpose
-    var today = Date()
 
     // MARK: Private methods
 
@@ -112,6 +109,11 @@ class ChangeService {
 
     // MARK: Public methods
 
+    // Set the shared as an empty value
+    func setUpShared() {
+        ChangeService.shared = ChangeService()
+    }
+
     // Refresh the ChangeRate. We need a closure on argument with:
     // - Type of error for result purpose
     // - String? contain the update date on european format
@@ -136,7 +138,7 @@ class ChangeService {
                     callback(.networkError, nil)
                     return
                 }
-                self.rates = responseJSON
+                ChangeService.shared.rates = responseJSON
                 callback(.requestSuccessfull, responseJSON.europeanFormatDate)
             }
         }
@@ -147,17 +149,17 @@ class ChangeService {
     // And convert it to USD following the current rates
     // It send the result back with a nice format
     // Thanks to the convertToClearNumber private method
-    func convertCurrency(numberToConvert: String ) -> String {
+    func convertCurrency(numberToConvert: String, currency: String ) -> String {
         let formatter = NumberFormatter()
         formatter.decimalSeparator = ","
         let numberFormated = formatter.number(from: numberToConvert)
         guard let toConvert = numberFormated?.doubleValue else {
             return ""
         }
-        guard let unwrappedRate = rates else {
+        guard let unwrappedRate = ChangeService.shared.rates else {
             return ""
         }
-        guard let reference = unwrappedRate.rates["USD"] else {
+        guard let reference = unwrappedRate.rates[currency] else {
             return ""
         }
         let resultToSend = Double(round(100*toConvert*reference)/100)
