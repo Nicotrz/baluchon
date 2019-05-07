@@ -246,6 +246,52 @@
             </objects>
             <point key="canvasLocation" x="532" y="548"/>
         </scene>
+        <!--Réglages-->
+        <scene sceneID="ixc-Qn-6Kj">
+            <objects>
+                <viewController id="kEo-Ca-koq" customClass="SettingsViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d7H-K6-WYs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Cqf-3E-Avd">
+                                <rect key="frame" x="20" y="70.5" width="335" height="100"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiP-ua-OvD">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="kEo-Ca-koq" id="FIw-Mq-F3t"/>
+                                            <outlet property="delegate" destination="kEo-Ca-koq" id="6mF-mI-a4t"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Pg1-qa-ho5"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taux de change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftf-UL-ifp">
+                                <rect key="frame" x="127" y="40" width="121" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96974819899999998" green="0.81753224130000002" blue="0.43912738559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bkG-cc-uwe" firstAttribute="trailing" secondItem="Cqf-3E-Avd" secondAttribute="trailing" constant="20" id="ZwN-ui-7uy"/>
+                            <constraint firstItem="Cqf-3E-Avd" firstAttribute="leading" secondItem="bkG-cc-uwe" secondAttribute="leading" constant="20" id="ery-bZ-aCX"/>
+                            <constraint firstItem="Cqf-3E-Avd" firstAttribute="top" secondItem="Ftf-UL-ifp" secondAttribute="bottom" constant="10" id="p17-il-ktc"/>
+                            <constraint firstItem="Ftf-UL-ifp" firstAttribute="centerX" secondItem="d7H-K6-WYs" secondAttribute="centerX" id="sZN-sn-zEl"/>
+                            <constraint firstItem="Ftf-UL-ifp" firstAttribute="top" secondItem="bkG-cc-uwe" secondAttribute="top" constant="20" id="zWw-6k-gL2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bkG-cc-uwe"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Réglages" image="settings_icon" id="7VK-gJ-OZi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyh-89-dfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="532" y="-818.14092953523243"/>
+        </scene>
         <!--Change-->
         <scene sceneID="j5q-9J-jZq">
             <objects>
@@ -421,6 +467,7 @@
                         <segue destination="3Fk-Us-GMO" kind="relationship" relationship="viewControllers" id="aWX-CG-mQe"/>
                         <segue destination="5gv-gB-J2X" kind="relationship" relationship="viewControllers" id="1eV-7f-01s"/>
                         <segue destination="S3n-5u-DEh" kind="relationship" relationship="viewControllers" id="e5L-zy-hsl"/>
+                        <segue destination="kEo-Ca-koq" kind="relationship" relationship="viewControllers" id="daz-g1-9pM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3e-Cm-JyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -432,6 +479,7 @@
         <image name="Backpack" width="366" height="506"/>
         <image name="change_icon" width="25" height="25"/>
         <image name="refresh_icon" width="512" height="512"/>
+        <image name="settings_icon" width="23" height="23"/>
         <image name="translate_icon" width="25" height="25"/>
         <image name="weather_icon" width="25" height="25"/>
     </resources>

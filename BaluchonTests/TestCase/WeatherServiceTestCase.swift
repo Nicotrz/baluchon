@@ -10,9 +10,11 @@
 
     class WeatherServiceTestCase: XCTestCase {
 
+        var fakeWeatherData = FakeData(typeOfData: "Weather")
+
         func testGetWeatherShouldPostFailedCallbackIfError() {
             let weatherService = WeatherService(
-                weatherSession: URLSessionFake(data: nil, response: nil, error: FakeWeatherData.error))
+                weatherSession: URLSessionFake(data: nil, response: nil, error: fakeWeatherData.error))
             let expectaction = XCTestExpectation(description: "Wait for queue change.")
             weatherService.getWeather(city: .nyc) { (success, result) in
                 XCTAssertFalse(success)
@@ -37,7 +39,7 @@
         func testGetWeatherShouldPostFailedCallbackIfIncorrectResponse() {
             let weatherService = WeatherService(
                 weatherSession: URLSessionFake(
-                    data: FakeWeatherData.weatherCorrectData, response: FakeWeatherData.responseKO, error: nil))
+                    data: fakeWeatherData.correctData, response: fakeWeatherData.responseKO, error: nil))
             let expectaction = XCTestExpectation(description: "Wait for queue change.")
             weatherService.getWeather(city: .nyc) { (success, result) in
                 XCTAssertFalse(success)
@@ -50,7 +52,7 @@
         func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
             let weatherService = WeatherService(
                 weatherSession: URLSessionFake(
-                    data: FakeWeatherData.weatherIncorrectData, response: FakeWeatherData.responseOK, error: nil))
+                    data: fakeWeatherData.incorrectData, response: fakeWeatherData.responseOK, error: nil))
             let expectaction = XCTestExpectation(description: "Wait for queue change.")
             weatherService.getWeather(city: .nyc) { (success, result) in
                 XCTAssertFalse(success)
@@ -63,7 +65,7 @@
         func testGetWeatherShouldSendBackSuccessFullAndCorrectDataIfCorrectAnswer() {
             let weatherService = WeatherService(
                 weatherSession: URLSessionFake(
-                    data: FakeWeatherData.weatherCorrectData, response: FakeWeatherData.responseOK, error: nil))
+                    data: fakeWeatherData.correctData, response: fakeWeatherData.responseOK, error: nil))
             let expectaction = XCTestExpectation(description: "Wait for queue change.")
             weatherService.getWeather(city: .nyc) { (success, result) in
                 XCTAssert(success)

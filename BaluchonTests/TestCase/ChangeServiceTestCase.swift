@@ -11,6 +11,8 @@ import XCTest
 
 class ChangeServiceTestCase: XCTestCase {
 
+    var fakeChangeData = FakeData(typeOfData: "ChangeRate")
+
     override func setUp() {
         ChangeService.shared.setUpShared()
         super.setUp()
@@ -22,7 +24,7 @@ class ChangeServiceTestCase: XCTestCase {
 
     func testRefreshChangeShouldPostFailedCallbackIfError() {
         let changeService = ChangeService(
-            changeSession: URLSessionFake(data: nil, response: nil, error: FakeChangeData.error))
+            changeSession: URLSessionFake(data: nil, response: nil, error: fakeChangeData.error))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
         changeService.refreshChangeRate { (errorCase, refreshDate) in
             XCTAssertEqual(errorCase, .networkError)
@@ -47,7 +49,7 @@ class ChangeServiceTestCase: XCTestCase {
     func testRefreshChangeShouldPostFailedCallbackIfIncorrectResponse() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(
-                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseKO, error: nil))
+                data: fakeChangeData.correctData, response: fakeChangeData.responseKO, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
         changeService.refreshChangeRate { (errorCase, refreshDate) in
             XCTAssertEqual(errorCase, .networkError)
@@ -60,7 +62,7 @@ class ChangeServiceTestCase: XCTestCase {
     func testRefreshChangeShouldPostFailedCallbackIfIncorrectData() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(
-                data: FakeChangeData.changeIncorrectData, response: FakeChangeData.responseOK, error: nil))
+                data: fakeChangeData.incorrectData, response: fakeChangeData.responseOK, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
         changeService.refreshChangeRate { (errorCase, refreshDate) in
            XCTAssertEqual(errorCase, .networkError)
@@ -73,7 +75,7 @@ class ChangeServiceTestCase: XCTestCase {
     func testConvertCurrencyShouldSendBackCorrectAnswerIfRatesAreRefreshed() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(
-                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseOK, error: nil))
+                data: fakeChangeData.correctData, response: fakeChangeData.responseOK, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
         changeService.refreshChangeRate { (errorCase, refreshDate) in
             XCTAssertEqual(errorCase, .requestSuccessfull)
@@ -87,7 +89,7 @@ class ChangeServiceTestCase: XCTestCase {
     func testConvertInvalidNumberConvertCurrencyShouldSendBackEmptyString() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(
-                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseOK, error: nil))
+                data: fakeChangeData.correctData, response: fakeChangeData.responseOK, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
         changeService.refreshChangeRate { (errorCase, refreshDate) in
             XCTAssertEqual(errorCase, .requestSuccessfull)
@@ -105,7 +107,7 @@ class ChangeServiceTestCase: XCTestCase {
     func testConvertWithSendingInvalidCurrencyShouldSendBackEmptyString() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(
-                data: FakeChangeData.changeCorrectData, response: FakeChangeData.responseOK, error: nil))
+                data: fakeChangeData.correctData, response: fakeChangeData.responseOK, error: nil))
         let expectaction = XCTestExpectation(description: "Wait for queue change.")
         changeService.refreshChangeRate { (errorCase, refreshDate) in
             XCTAssertEqual(errorCase, .requestSuccessfull)
