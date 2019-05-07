@@ -59,18 +59,21 @@ class TranslateService {
     // Creating the request from the URL with accessKey
     private func createTranslateRequest(textToTranslate: String) -> URLRequest {
         requestURL += "?key=\(accessKey)&source=fr&target=en&q=\(textToTranslate)"
-        print(requestURL)
         let translateUrl = URL(string: requestURL)!
         var request = URLRequest(url: translateUrl)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
         return request
     }
 
+    // This function translate the text in a version suitable for an URL Query
+    // ( example: space are replaced by %20 )
     private func getTextReadyForRequest(textToTranslate: String) -> String {
         let resultToSend: String = textToTranslate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         return resultToSend
     }
 
+    // This function translate the result in a version suitable for the label
+    // ( example: It&#39;s become It's )
     private func convertTextIntoAPrettyString(textToConvert: String) -> [Bool: String] {
         var resultToSend = ""
         guard let encodedData = textToConvert.data(using: .utf8) else {
@@ -94,10 +97,9 @@ class TranslateService {
 
     // MARK: Public methods
 
-    // Refresh the ChangeRate. We need a closure on argument with:
-    // - Type of error for result purpose
-    // - String? contain the update date on european format
-    // This method send the result to the rates variable
+    // Get the translation. We need a closure on argument with:
+    // - request success ( yes or no )
+    // - String? contain the result in form of a pretty string
     func getTranslation(textToTranslate: String, callback: @escaping (Bool, String?) -> Void) {
         let textReady = getTextReadyForRequest(textToTranslate: textToTranslate)
         let request = createTranslateRequest(textToTranslate: textReady)

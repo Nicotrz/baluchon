@@ -119,9 +119,11 @@ class ChangeService {
     // - String? contain the update date on european format
     // This method send the result to the rates variable
     func refreshChangeRate(callback: @escaping (ErrorCase, String?) -> Void) {
-        if areDataAlreadyUpdated {
+        guard !areDataAlreadyUpdated else {
             callback(.alreadyRefreshed, nil)
+            return
         }
+        setUpShared()
         let request = createChangeRequest()
         task?.cancel()
         task = changeSession.dataTask(with: request) { (data, response, error) in
