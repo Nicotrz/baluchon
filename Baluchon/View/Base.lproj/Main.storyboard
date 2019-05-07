@@ -90,6 +90,9 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="cYG-A5-vq6">
+                                <rect key="frame" x="177.5" y="573" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96974819898605347" green="0.8175322413444519" blue="0.43912738561630249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -97,8 +100,10 @@
                             <constraint firstItem="gqu-bm-joa" firstAttribute="top" secondItem="nKQ-Lc-Gft" secondAttribute="top" constant="20" id="AXF-Rj-loX"/>
                             <constraint firstItem="pVu-Wd-w0T" firstAttribute="leading" secondItem="nKQ-Lc-Gft" secondAttribute="leading" constant="20" id="HVD-uJ-qfQ"/>
                             <constraint firstItem="nKQ-Lc-Gft" firstAttribute="trailing" secondItem="AXV-79-SMM" secondAttribute="trailing" constant="20" id="IBM-6f-Whg"/>
+                            <constraint firstItem="cYG-A5-vq6" firstAttribute="centerY" secondItem="apK-0I-dOk" secondAttribute="centerY" id="JSy-29-UKb"/>
                             <constraint firstItem="PnM-1M-5XW" firstAttribute="top" secondItem="gqu-bm-joa" secondAttribute="bottom" constant="10" id="Kgp-VI-6tA"/>
                             <constraint firstItem="N47-9j-9Es" firstAttribute="top" secondItem="PnM-1M-5XW" secondAttribute="bottom" constant="20" id="URg-gI-9cZ"/>
+                            <constraint firstItem="cYG-A5-vq6" firstAttribute="centerX" secondItem="apK-0I-dOk" secondAttribute="centerX" id="XKS-jp-h2p"/>
                             <constraint firstItem="nKQ-Lc-Gft" firstAttribute="trailing" secondItem="pVu-Wd-w0T" secondAttribute="trailing" constant="20" id="cL8-sp-RJb"/>
                             <constraint firstItem="4DB-Sd-vnC" firstAttribute="top" secondItem="pVu-Wd-w0T" secondAttribute="bottom" constant="10" id="hV6-Mm-2vR"/>
                             <constraint firstItem="4DB-Sd-vnC" firstAttribute="centerX" secondItem="8Mc-LE-E9u" secondAttribute="centerX" id="hsN-G0-3F5"/>
@@ -116,6 +121,7 @@
                     <connections>
                         <outlet property="destinationConditionsLabel" destination="kFS-05-R2G" id="huW-KO-csi"/>
                         <outlet property="destinationTemperatureLabel" destination="egx-FW-h9O" id="GpF-13-fVz"/>
+                        <outlet property="loadingActivityIndicator" destination="cYG-A5-vq6" id="jrU-aw-Pkw"/>
                         <outlet property="localConditionsLabel" destination="RMc-YG-HnT" id="hg1-h9-8pH"/>
                         <outlet property="localTemperatureLabel" destination="zMt-Fq-RGN" id="xXO-j8-Kbk"/>
                         <outlet property="refreshButton" destination="apK-0I-dOk" id="1Ey-Aq-v4o"/>
