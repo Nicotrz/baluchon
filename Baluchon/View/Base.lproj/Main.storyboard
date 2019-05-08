@@ -466,6 +466,7 @@
                         <outlet property="refreshButton" destination="iKu-1N-aDj" id="HZw-64-kvF"/>
                         <outlet property="refreshDateLabel" destination="Z12-r1-0Xa" id="U35-3L-2B1"/>
                         <outlet property="resultLabel" destination="dnb-p1-7Mr" id="BJs-Mo-KG8"/>
+                        <outlet property="startingCurrencyLabel" destination="Obq-vh-ejC" id="dAy-en-DpZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nC8-B7-Ivx" userLabel="First Responder" sceneMemberID="firstResponder"/>

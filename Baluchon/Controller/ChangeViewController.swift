@@ -12,12 +12,19 @@ class ChangeViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var numberToConvertTextField: UITextField!
+    @IBOutlet weak var startingCurrencyLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var refreshDateLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
 
+    override func viewWillAppear(_ animated: Bool) {
+        for currency in devises where currency.code == ChangeService.shared.startingCurrency {
+            startingCurrencyLabel.text = currency.descr_short
+        }
+        super.viewWillAppear(animated)
+    }
     // MARK: Private properties
 
     // Is the Input text field Empty?

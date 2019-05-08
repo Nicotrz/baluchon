@@ -103,11 +103,15 @@ class ChangeService {
     private func convertToClearNumber(toConvert number: Double) -> String {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
+        currencyFormatter.numberStyle = .decimal
         // localize to your grouping and decimal separator
-        currencyFormatter.locale = Locale(identifier: "en_US")
+        currencyFormatter.locale = Locale(identifier: "fr_BE")
+        var destinationShortDescription = String()
+        for currency in devises where currency.code == destinationCurrency {
+            destinationShortDescription = currency.descr_short
+        }
         // We'll force unwrap with the !, if you've got defined data you may need more error checking
-        return currencyFormatter.string(from: NSNumber(value: number))!
+        return "\(currencyFormatter.string(from: NSNumber(value: number))!) \(destinationShortDescription)"
     }
 
     // MARK: Public methods
