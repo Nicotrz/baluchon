@@ -57,7 +57,7 @@ class ChangeViewController: UIViewController {
             return
         }
         let resultToSend = ChangeService.shared.convertCurrency(
-            numberToConvert: numberToConvertTextField.text!, currency: "USD")
+            numberToConvert: numberToConvertTextField.text!)
         self.resultLabel.text = "\(resultToSend)"
     }
 

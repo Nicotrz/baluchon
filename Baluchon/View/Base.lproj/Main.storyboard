@@ -254,39 +254,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Cqf-3E-Avd">
-                                <rect key="frame" x="20" y="70.5" width="335" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hOf-fc-43L">
+                                <rect key="frame" x="27.5" y="30" width="320" height="578"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taux de change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cId-0n-IKi">
+                                        <rect key="frame" x="24.5" y="0.0" width="271.5" height="36.5"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6d-ps-Lpt">
+                                        <rect key="frame" x="143.5" y="46.5" width="33" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qof-87-ZB8">
+                                        <rect key="frame" x="0.0" y="81" width="320" height="208"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="kEo-Ca-koq" id="e4l-iE-y8V"/>
+                                            <outlet property="delegate" destination="kEo-Ca-koq" id="KFx-ef-Epp"/>
+                                        </connections>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-I5-Syn">
+                                        <rect key="frame" x="149.5" y="299" width="21.5" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiP-ua-OvD">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                                        <rect key="frame" x="0.0" y="333.5" width="320" height="207.5"/>
                                         <connections>
                                             <outlet property="dataSource" destination="kEo-Ca-koq" id="FIw-Mq-F3t"/>
                                             <outlet property="delegate" destination="kEo-Ca-koq" id="6mF-mI-a4t"/>
                                         </connections>
                                     </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdY-3c-Tf2">
+                                        <rect key="frame" x="122" y="551" width="76" height="27"/>
+                                        <state key="normal" title="Enregistrer"/>
+                                        <connections>
+                                            <action selector="userPressedSetSettings:" destination="kEo-Ca-koq" eventType="touchUpInside" id="tMF-tt-YuD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Pg1-qa-ho5"/>
-                                </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taux de change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftf-UL-ifp">
-                                <rect key="frame" x="127" y="40" width="121" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96974819899999998" green="0.81753224130000002" blue="0.43912738559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="bkG-cc-uwe" firstAttribute="trailing" secondItem="Cqf-3E-Avd" secondAttribute="trailing" constant="20" id="ZwN-ui-7uy"/>
-                            <constraint firstItem="Cqf-3E-Avd" firstAttribute="leading" secondItem="bkG-cc-uwe" secondAttribute="leading" constant="20" id="ery-bZ-aCX"/>
-                            <constraint firstItem="Cqf-3E-Avd" firstAttribute="top" secondItem="Ftf-UL-ifp" secondAttribute="bottom" constant="10" id="p17-il-ktc"/>
-                            <constraint firstItem="Ftf-UL-ifp" firstAttribute="centerX" secondItem="d7H-K6-WYs" secondAttribute="centerX" id="sZN-sn-zEl"/>
-                            <constraint firstItem="Ftf-UL-ifp" firstAttribute="top" secondItem="bkG-cc-uwe" secondAttribute="top" constant="20" id="zWw-6k-gL2"/>
+                            <constraint firstItem="bkG-cc-uwe" firstAttribute="bottom" secondItem="hOf-fc-43L" secondAttribute="bottom" constant="10" id="3oP-0T-r5h"/>
+                            <constraint firstItem="hOf-fc-43L" firstAttribute="centerX" secondItem="d7H-K6-WYs" secondAttribute="centerX" id="5X7-Vd-iN6"/>
+                            <constraint firstItem="hOf-fc-43L" firstAttribute="top" secondItem="bkG-cc-uwe" secondAttribute="top" constant="10" id="t8o-ks-WLb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bkG-cc-uwe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Réglages" image="settings_icon" id="7VK-gJ-OZi"/>
+                    <connections>
+                        <outlet property="currencyDestinationPickerView" destination="tiP-ua-OvD" id="UjH-dm-af8"/>
+                        <outlet property="currencyOriginPickerView" destination="qof-87-ZB8" id="MdP-6t-h0b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyh-89-dfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

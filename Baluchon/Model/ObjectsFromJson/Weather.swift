@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable variable_name
 struct Weather: Codable {
     let coord: Coord
     let weather: [WeatherElement]

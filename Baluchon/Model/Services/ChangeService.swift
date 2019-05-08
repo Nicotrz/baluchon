@@ -85,6 +85,9 @@ class ChangeService {
         return ChangeService.shared.rates != nil
     }
 
+    var startingCurrency = "EUR"
+    var destinationCurrency = "USD"
+
     // MARK: Private methods
 
     // Creating the request from the URL with accessKey
@@ -148,10 +151,10 @@ class ChangeService {
     }
 
     // This method takes the numberToConvert
-    // And convert it to USD following the current rates
+    // And convert it to destinationCurrency following the current rates
     // It send the result back with a nice format
     // Thanks to the convertToClearNumber private method
-    func convertCurrency(numberToConvert: String, currency: String ) -> String {
+    func convertCurrency(numberToConvert: String) -> String {
         let formatter = NumberFormatter()
         formatter.decimalSeparator = ","
         let numberFormated = formatter.number(from: numberToConvert)
@@ -161,10 +164,13 @@ class ChangeService {
         guard let unwrappedRate = ChangeService.shared.rates else {
             return ""
         }
-        guard let reference = unwrappedRate.rates[currency] else {
+        guard let base = unwrappedRate.rates[startingCurrency] else {
             return ""
         }
-        let resultToSend = Double(round(100*toConvert*reference)/100)
+        guard let reference = unwrappedRate.rates[destinationCurrency] else {
+            return ""
+        }
+        let resultToSend = Double(round(100*toConvert/base*reference)/100)
         return convertToClearNumber(toConvert: resultToSend)
     }
 
