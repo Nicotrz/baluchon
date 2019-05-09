@@ -25,6 +25,11 @@ class ChangeViewController: UIViewController {
         }
         super.viewWillAppear(animated)
     }
+
+    override func viewDidLoad() {
+        refreshRates()
+        super.viewDidLoad()
+    }
     // MARK: Private properties
 
     // Is the Input text field Empty?

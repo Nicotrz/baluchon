@@ -31,22 +31,27 @@ class WeatherViewController: UIViewController {
     }
 
     private func refreshWeather() {
-        WeatherService.shared.getWeather(city: .brussel) { (success, result) in
-            guard success else {
-                self.showAlert(message: "Erreur de connexion")
-                return
+            WeatherService.shared.getWeather(city: .brussel) { (successRequest1, resultRequest1) in
+                guard successRequest1 else {
+                    self.showAlert(message: "Erreur de connexion")
+                    return
+                }
+                guard let unwrappedRequest1 = resultRequest1 else {
+                    self.showAlert(message: "Erreur de connexion")
+                    return
+                }
+                WeatherService.shared.getWeather(city: .nyc) { (successRequest2, resultRequest2) in
+                    guard successRequest2 else {
+                        self.showAlert(message: "Erreur de connexion")
+                        return
+                    }
+                    guard let unwrappedRequest2 = resultRequest2 else {
+                        self.showAlert(message: "Erreur de connexion")
+                        return
+                    }
+                    self.updateLabel(firstCity: unwrappedRequest1, secondCity: unwrappedRequest2)
+                }
             }
-            self.localConditionsLabel.text = result![0]
-            self.localTemperatureLabel.text = "\(result![1])°C"
-        }
-        WeatherService.shared.getWeather(city: .nyc) { (success, result) in
-            guard success else {
-                self.showAlert(message: "Erreur de connexion")
-                return
-            }
-            self.destinationConditionsLabel.text = result![0]
-            self.destinationTemperatureLabel.text = "\(result![1])°C"
-        }
     }
 
     // Display an alert with the message of our choices
@@ -57,4 +62,10 @@ class WeatherViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    private func updateLabel(firstCity: Weather, secondCity: Weather ) {
+        localTemperatureLabel.text = "\(String(firstCity.main.temp))°C"
+        localConditionsLabel.text = firstCity.prettyDescriptionString
+        destinationTemperatureLabel.text = "\(String(secondCity.main.temp))°C"
+        destinationConditionsLabel.text = secondCity.prettyDescriptionString
+    }
 }

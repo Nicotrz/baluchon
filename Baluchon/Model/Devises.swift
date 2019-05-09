@@ -174,4 +174,3 @@ let devises: [(code: String, descr: String, descr_short: String)] = [
     ("JPY", "Yen", "¥"),
     ("CNY", "Yuan renminbi", "¥"),
     ("PLN", "Złoty polonais", "złoty")]
-    

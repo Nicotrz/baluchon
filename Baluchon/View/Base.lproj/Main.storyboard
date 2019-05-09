@@ -43,17 +43,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="pVu-Wd-w0T">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="pVu-Wd-w0T">
                                 <rect key="frame" x="20" y="319.5" width="335" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMt-Fq-RGN">
-                                        <rect key="frame" x="0.0" y="0.0" width="123" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°C" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="zMt-Fq-RGN">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="31"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuageux" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RMc-YG-HnT">
-                                        <rect key="frame" x="212" y="0.0" width="123" height="31"/>
+                                        <rect key="frame" x="146.5" y="0.0" width="188.5" height="31"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -73,17 +73,17 @@
                                     <action selector="refreshButtonPressed:" destination="S3n-5u-DEh" eventType="touchUpInside" id="Zqy-pX-DeS"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="AXV-79-SMM">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="AXV-79-SMM">
                                 <rect key="frame" x="20" y="417" width="335" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egx-FW-h9O">
-                                        <rect key="frame" x="0.0" y="0.0" width="123" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°C" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="egx-FW-h9O">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="31"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuageux" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kFS-05-R2G">
-                                        <rect key="frame" x="212" y="0.0" width="123" height="31"/>
+                                        <rect key="frame" x="146.5" y="0.0" width="188.5" height="31"/>
                                         <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -246,56 +246,59 @@
             </objects>
             <point key="canvasLocation" x="532" y="548"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="sOy-eX-nLO">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="4XE-qv-pDF" customClass="SettingPagesViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="settings_icon" id="lTb-iR-DJn"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OyR-xx-R9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322" y="-818"/>
+        </scene>
         <!--Réglages-->
         <scene sceneID="ixc-Qn-6Kj">
             <objects>
-                <viewController id="kEo-Ca-koq" customClass="SettingsViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingChangeViewController" id="kEo-Ca-koq" customClass="SettingsViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d7H-K6-WYs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hOf-fc-43L">
-                                <rect key="frame" x="27.5" y="30" width="320" height="578"/>
+                                <rect key="frame" x="27.5" y="30" width="320" height="627"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taux de change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cId-0n-IKi">
-                                        <rect key="frame" x="24.5" y="0.0" width="271.5" height="36.5"/>
+                                        <rect key="frame" x="24.5" y="0.0" width="271.5" height="42.5"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6d-ps-Lpt">
-                                        <rect key="frame" x="143.5" y="46.5" width="33" height="24.5"/>
+                                        <rect key="frame" x="143.5" y="52.5" width="33" height="28.5"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qof-87-ZB8">
-                                        <rect key="frame" x="0.0" y="81" width="320" height="208"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="241.5"/>
                                         <connections>
                                             <outlet property="dataSource" destination="kEo-Ca-koq" id="e4l-iE-y8V"/>
                                             <outlet property="delegate" destination="kEo-Ca-koq" id="KFx-ef-Epp"/>
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-I5-Syn">
-                                        <rect key="frame" x="149.5" y="299" width="21.5" height="24.5"/>
+                                        <rect key="frame" x="149.5" y="342.5" width="21.5" height="28.5"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiP-ua-OvD">
-                                        <rect key="frame" x="0.0" y="333.5" width="320" height="207.5"/>
+                                        <rect key="frame" x="0.0" y="381" width="320" height="246"/>
                                         <connections>
                                             <outlet property="dataSource" destination="kEo-Ca-koq" id="FIw-Mq-F3t"/>
                                             <outlet property="delegate" destination="kEo-Ca-koq" id="6mF-mI-a4t"/>
                                         </connections>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdY-3c-Tf2">
-                                        <rect key="frame" x="122" y="551" width="76" height="27"/>
-                                        <state key="normal" title="Enregistrer"/>
-                                        <connections>
-                                            <action selector="userPressedSetSettings:" destination="kEo-Ca-koq" eventType="touchUpInside" id="tMF-tt-YuD"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -410,7 +413,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="dnb-p1-7Mr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0$" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="dnb-p1-7Mr">
                                         <rect key="frame" x="69.5" y="77.5" width="61.5" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
@@ -493,12 +496,68 @@
                         <segue destination="3Fk-Us-GMO" kind="relationship" relationship="viewControllers" id="aWX-CG-mQe"/>
                         <segue destination="5gv-gB-J2X" kind="relationship" relationship="viewControllers" id="1eV-7f-01s"/>
                         <segue destination="S3n-5u-DEh" kind="relationship" relationship="viewControllers" id="e5L-zy-hsl"/>
-                        <segue destination="kEo-Ca-koq" kind="relationship" relationship="viewControllers" id="daz-g1-9pM"/>
+                        <segue destination="4XE-qv-pDF" kind="relationship" relationship="viewControllers" id="q7C-p0-98D"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3e-Cm-JyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-386" y="224"/>
+        </scene>
+        <!--Réglages-->
+        <scene sceneID="dBt-ac-eKV">
+            <objects>
+                <viewController storyboardIdentifier="SettingTranslateViewController" id="mFc-Qj-e5b" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XxL-tM-cRw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DX-bF-ucd">
+                                <rect key="frame" x="93" y="30" width="189" height="38"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96974819899999998" green="0.81753224130000002" blue="0.43912738559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="4DX-bF-ucd" firstAttribute="centerX" secondItem="XxL-tM-cRw" secondAttribute="centerX" id="bzN-sf-QwK"/>
+                            <constraint firstItem="4DX-bF-ucd" firstAttribute="top" secondItem="7I6-bS-QVm" secondAttribute="top" constant="10" id="x3e-4L-F39"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7I6-bS-QVm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Réglages" image="settings_icon" id="aOD-RK-hcf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBB-rn-lTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1295" y="-818"/>
+        </scene>
+        <!--Réglages-->
+        <scene sceneID="fvA-8h-suU">
+            <objects>
+                <viewController storyboardIdentifier="SettingWeatherViewController" id="t6n-vG-esv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rhy-fO-hdu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Météo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sy5-hh-jKh">
+                                <rect key="frame" x="138.5" y="30" width="98" height="38"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96974819899999998" green="0.81753224130000002" blue="0.43912738559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="sy5-hh-jKh" firstAttribute="centerX" secondItem="rhy-fO-hdu" secondAttribute="centerX" id="DC1-rw-aXP"/>
+                            <constraint firstItem="sy5-hh-jKh" firstAttribute="top" secondItem="yNH-pu-US7" secondAttribute="top" constant="10" id="kK0-r2-9T6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yNH-pu-US7"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Réglages" image="settings_icon" id="tK8-1Y-5bW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9h-KV-TFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2001" y="-818"/>
         </scene>
     </scenes>
     <resources>

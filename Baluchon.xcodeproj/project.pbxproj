@@ -18,6 +18,7 @@
 		0608A62822820E11003E6E7B /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62722820E11003E6E7B /* FakeData.swift */; };
 		0608A62E22821905003E6E7B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62D22821905003E6E7B /* SettingsViewController.swift */; };
 		0608A630228219BA003E6E7B /* Devises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62F228219BA003E6E7B /* Devises.swift */; };
+		0608A6322284B6CD003E6E7B /* SettingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */; };
 		069E2E15227C576B004FA0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E14227C576B004FA0F7 /* AppDelegate.swift */; };
 		069E2E1A227C576B004FA0F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069E2E18227C576B004FA0F7 /* Main.storyboard */; };
 		069E2E1C227C576C004FA0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069E2E1B227C576C004FA0F7 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		0608A62722820E11003E6E7B /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		0608A62D22821905003E6E7B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0608A62F228219BA003E6E7B /* Devises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devises.swift; sourceTree = "<group>"; };
+		0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPagesViewController.swift; sourceTree = "<group>"; };
 		069E2E11227C576B004FA0F7 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069E2E14227C576B004FA0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069E2E19227C576B004FA0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				069E2E28227C7CC9004FA0F7 /* ChangeViewController.swift */,
 				069E2E26227C7CAD004FA0F7 /* WeatherViewController.swift */,
 				0608A62D22821905003E6E7B /* SettingsViewController.swift */,
+				0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0608A6222281A5CD003E6E7B /* WeatherService.swift in Sources */,
+				0608A6322284B6CD003E6E7B /* SettingPagesViewController.swift in Sources */,
 				0608A61622806DCE003E6E7B /* Translate.swift in Sources */,
 				0608A62E22821905003E6E7B /* SettingsViewController.swift in Sources */,
 				0608A630228219BA003E6E7B /* Devises.swift in Sources */,

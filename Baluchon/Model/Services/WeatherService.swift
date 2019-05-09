@@ -99,7 +99,7 @@ class WeatherService {
     // Get the translation. We need a closure on argument with:
     // - request success ( yes or no )
     // - String? contain the result in form of a pretty string
-    func getWeather(city: City, callback: @escaping (Bool, [String]?) -> Void) {
+    func getWeather(city: City, callback: @escaping (Bool, Weather?) -> Void) {
         let request = createWeatherRequest(city: city)
         task?.cancel()
         task = weatherSession.dataTask(with: request) { (data, response, error) in
@@ -116,13 +116,7 @@ class WeatherService {
                     callback(false, nil)
                     return
                 }
-                let resultConvert = self.convertTextIntoAPrettyString(
-                    textToConvert: responseJSON.weather[0].description)
-                guard resultConvert != [false: ""] else {
-                    callback(false, nil)
-                    return
-                }
-                callback(true, [resultConvert[true]!, String(responseJSON.main.temp)])
+                callback(true, responseJSON)
             }
         }
         task?.resume()

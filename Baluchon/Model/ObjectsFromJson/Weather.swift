@@ -10,6 +10,30 @@ import Foundation
 
 // swiftlint:disable variable_name
 struct Weather: Codable {
+
+    // This function translate the result in a version suitable for the label
+    // ( example: It&#39;s become It's )
+    var prettyDescriptionString: String {
+        var resultToSend = ""
+        guard let encodedData = weather[0].description.data(using: .utf8) else {
+            return  ""
+        }
+        
+        let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        
+        do {
+            let attributedString = try NSAttributedString(
+                data: encodedData, options: attributedOptions, documentAttributes: nil)
+            resultToSend = attributedString.string
+        } catch {
+            return ""
+        }
+        return resultToSend
+    }
+    
     let coord: Coord
     let weather: [WeatherElement]
     let base: String
