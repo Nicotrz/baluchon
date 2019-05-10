@@ -35,7 +35,7 @@ class ChangeService {
     // MARK: private properties
 
     // The URL for the request
-    private var requestURL = "http://data.fixer.io/api/latest?access_key="
+    private var requestURL = "http://data.fixer.io/api/latest"
 
     // The task for the request
     private var task: URLSessionDataTask?
@@ -92,8 +92,8 @@ class ChangeService {
 
     // Creating the request from the URL with accessKey
     private func createChangeRequest() -> URLRequest {
-        requestURL += "\(accessKey)"
-        let changeUrl = URL(string: requestURL)!
+        let newRequestURL = "\(requestURL)?access_key=\(accessKey)"
+        let changeUrl = URL(string: newRequestURL)!
         var request = URLRequest(url: changeUrl)
         request.httpMethod = "GET"
         return request
@@ -116,11 +116,6 @@ class ChangeService {
 
     // MARK: Public methods
 
-    // Set the shared as an empty value
-    func setUpShared() {
-        ChangeService.shared = ChangeService()
-    }
-
     // Refresh the ChangeRate. We need a closure on argument with:
     // - Type of error for result purpose
     // - String? contain the update date on european format
@@ -130,7 +125,6 @@ class ChangeService {
             callback(.alreadyRefreshed, nil)
             return
         }
-        setUpShared()
         let request = createChangeRequest()
         task?.cancel()
         task = changeSession.dataTask(with: request) { (data, response, error) in

@@ -16,9 +16,13 @@
 		0608A6222281A5CD003E6E7B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6212281A5CD003E6E7B /* WeatherService.swift */; };
 		0608A6262281AAAC003E6E7B /* WeatherServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6252281AAAC003E6E7B /* WeatherServiceTestCase.swift */; };
 		0608A62822820E11003E6E7B /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62722820E11003E6E7B /* FakeData.swift */; };
-		0608A62E22821905003E6E7B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62D22821905003E6E7B /* SettingsViewController.swift */; };
+		0608A62E22821905003E6E7B /* SettingChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62D22821905003E6E7B /* SettingChangeViewController.swift */; };
 		0608A630228219BA003E6E7B /* Devises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A62F228219BA003E6E7B /* Devises.swift */; };
 		0608A6322284B6CD003E6E7B /* SettingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */; };
+		0608A6352285B35A003E6E7B /* SettingTranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6342285B35A003E6E7B /* SettingTranslateViewController.swift */; };
+		0608A6372285B379003E6E7B /* SettingWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6362285B379003E6E7B /* SettingWeatherViewController.swift */; };
+		0608A63A2285F6F3003E6E7B /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A6392285F6F3003E6E7B /* Language.swift */; };
+		0608A63C22860352003E6E7B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0608A63B22860352003E6E7B /* City.swift */; };
 		069E2E15227C576B004FA0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E2E14227C576B004FA0F7 /* AppDelegate.swift */; };
 		069E2E1A227C576B004FA0F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069E2E18227C576B004FA0F7 /* Main.storyboard */; };
 		069E2E1C227C576C004FA0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069E2E1B227C576C004FA0F7 /* Assets.xcassets */; };
@@ -54,9 +58,13 @@
 		0608A6212281A5CD003E6E7B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		0608A6252281AAAC003E6E7B /* WeatherServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTestCase.swift; sourceTree = "<group>"; };
 		0608A62722820E11003E6E7B /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
-		0608A62D22821905003E6E7B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0608A62D22821905003E6E7B /* SettingChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingChangeViewController.swift; sourceTree = "<group>"; };
 		0608A62F228219BA003E6E7B /* Devises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devises.swift; sourceTree = "<group>"; };
 		0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPagesViewController.swift; sourceTree = "<group>"; };
+		0608A6342285B35A003E6E7B /* SettingTranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTranslateViewController.swift; sourceTree = "<group>"; };
+		0608A6362285B379003E6E7B /* SettingWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWeatherViewController.swift; sourceTree = "<group>"; };
+		0608A6392285F6F3003E6E7B /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		0608A63B22860352003E6E7B /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		069E2E11227C576B004FA0F7 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069E2E14227C576B004FA0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069E2E19227C576B004FA0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +144,27 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		0608A6332285B32D003E6E7B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */,
+				0608A62D22821905003E6E7B /* SettingChangeViewController.swift */,
+				0608A6342285B35A003E6E7B /* SettingTranslateViewController.swift */,
+				0608A6362285B379003E6E7B /* SettingWeatherViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0608A6382285F6E0003E6E7B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0608A62F228219BA003E6E7B /* Devises.swift */,
+				0608A6392285F6F3003E6E7B /* Language.swift */,
+				0608A63B22860352003E6E7B /* City.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		069E2E08227C576B004FA0F7 = {
 			isa = PBXGroup;
 			children = (
@@ -170,9 +199,9 @@
 		069E2E2C227C7CF1004FA0F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0608A6382285F6E0003E6E7B /* Data */,
 				0608A62C2282120B003E6E7B /* Services */,
 				0608A62B228211F1003E6E7B /* ObjectsFromJson */,
-				0608A62F228219BA003E6E7B /* Devises.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,11 +219,10 @@
 		069E2E2E227C7CFC004FA0F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0608A6332285B32D003E6E7B /* Settings */,
 				069E2E2A227C7CDC004FA0F7 /* TranslateViewController.swift */,
 				069E2E28227C7CC9004FA0F7 /* ChangeViewController.swift */,
 				069E2E26227C7CAD004FA0F7 /* WeatherViewController.swift */,
-				0608A62D22821905003E6E7B /* SettingsViewController.swift */,
-				0608A6312284B6CD003E6E7B /* SettingPagesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,14 +366,18 @@
 				0608A6222281A5CD003E6E7B /* WeatherService.swift in Sources */,
 				0608A6322284B6CD003E6E7B /* SettingPagesViewController.swift in Sources */,
 				0608A61622806DCE003E6E7B /* Translate.swift in Sources */,
-				0608A62E22821905003E6E7B /* SettingsViewController.swift in Sources */,
+				0608A6372285B379003E6E7B /* SettingWeatherViewController.swift in Sources */,
+				0608A62E22821905003E6E7B /* SettingChangeViewController.swift in Sources */,
 				0608A630228219BA003E6E7B /* Devises.swift in Sources */,
 				069E2E29227C7CC9004FA0F7 /* ChangeViewController.swift in Sources */,
 				069E2E33227CC1CC004FA0F7 /* ChangeService.swift in Sources */,
 				069E2E2B227C7CDC004FA0F7 /* TranslateViewController.swift in Sources */,
+				0608A63C22860352003E6E7B /* City.swift in Sources */,
+				0608A6352285B35A003E6E7B /* SettingTranslateViewController.swift in Sources */,
 				0608A6202281A58E003E6E7B /* Weather.swift in Sources */,
 				069E2E49227CC6EF004FA0F7 /* Rate.swift in Sources */,
 				069E2E15227C576B004FA0F7 /* AppDelegate.swift in Sources */,
+				0608A63A2285F6F3003E6E7B /* Language.swift in Sources */,
 				0608A61422805213003E6E7B /* TranslateService.swift in Sources */,
 				069E2E27227C7CAD004FA0F7 /* WeatherViewController.swift in Sources */,
 			);

@@ -18,12 +18,10 @@ struct Weather: Codable {
         guard let encodedData = weather[0].description.data(using: .utf8) else {
             return  ""
         }
-        
         let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] = [
             .documentType: NSAttributedString.DocumentType.html,
             .characterEncoding: String.Encoding.utf8.rawValue
         ]
-        
         do {
             let attributedString = try NSAttributedString(
                 data: encodedData, options: attributedOptions, documentAttributes: nil)
@@ -33,7 +31,6 @@ struct Weather: Codable {
         }
         return resultToSend
     }
-    
     let coord: Coord
     let weather: [WeatherElement]
     let base: String

@@ -17,7 +17,8 @@ class SettingPagesViewController: UIPageViewController {
     }()
 
     private func newViewController(function: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Setting\(function)ViewController")
+        return UIStoryboard(
+            name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Setting\(function)ViewController")
     }
 
     private func stylePageControl() {
@@ -29,7 +30,7 @@ class SettingPagesViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        
+
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
@@ -47,18 +48,17 @@ extension SettingPagesViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
-        
+
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = orderedViewControllers.count
-        
+
         guard orderedViewControllersCount != nextIndex else {
             return nil
         }
-        
+
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
-        
         return orderedViewControllers[nextIndex]
     }
 
@@ -68,20 +68,20 @@ extension SettingPagesViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return orderedViewControllers.last
         }
-        
+
         let previousIndex = viewControllerIndex - 1
-        
+
         guard previousIndex >= 0 else {
             return nil
         }
-        
+
         guard orderedViewControllers.count > previousIndex else {
             return nil
         }
-        
+
         return orderedViewControllers[previousIndex]
     }
-    
+
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return orderedViewControllers.count
     }
@@ -91,9 +91,7 @@ extension SettingPagesViewController: UIPageViewControllerDataSource {
             let firstViewControllerIndex = orderedViewControllers.firstIndex(of: firstViewController) else {
                 return 0
         }
-        
+
         return firstViewControllerIndex
-        
-        
     }
 }

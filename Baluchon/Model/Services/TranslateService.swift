@@ -23,6 +23,8 @@ class TranslateService {
         self.translateSession = translateSession
     }
 
+    var originLanguage = "fr"
+    var destinationLanguage = "en"
     // MARK: private properties
 
     // The URL for the request
@@ -58,8 +60,8 @@ class TranslateService {
 
     // Creating the request from the URL with accessKey
     private func createTranslateRequest(textToTranslate: String) -> URLRequest {
-        requestURL += "?key=\(accessKey)&source=fr&target=en&q=\(textToTranslate)"
-        let translateUrl = URL(string: requestURL)!
+        let newRequestURL = "\(requestURL)?key=\(accessKey)&source=\(originLanguage)&target=\(destinationLanguage)&q=\(textToTranslate)"
+        let translateUrl = URL(string: newRequestURL)!
         var request = URLRequest(url: translateUrl)
         request.httpMethod = "POST"
         return request
@@ -128,6 +130,6 @@ class TranslateService {
             }
         }
         task?.resume()
-        TranslateService.shared = TranslateService()
+     //   TranslateService.shared = TranslateService()
     }
 }

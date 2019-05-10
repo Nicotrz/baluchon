@@ -31,7 +31,7 @@ class WeatherViewController: UIViewController {
     }
 
     private func refreshWeather() {
-            WeatherService.shared.getWeather(city: .brussel) { (successRequest1, resultRequest1) in
+        WeatherService.shared.getWeather(city: .brussel) { (successRequest1, resultRequest1) in
                 guard successRequest1 else {
                     self.showAlert(message: "Erreur de connexion")
                     return
