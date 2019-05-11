@@ -13,8 +13,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var localTemperatureLabel: UILabel!
     @IBOutlet weak var localConditionsLabel: UILabel!
+    @IBOutlet weak var localCityNameLabel: UILabel!
     @IBOutlet weak var destinationTemperatureLabel: UILabel!
     @IBOutlet weak var destinationConditionsLabel: UILabel!
+    @IBOutlet weak var destinationCityNameLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
@@ -31,7 +33,7 @@ class WeatherViewController: UIViewController {
     }
 
     private func refreshWeather() {
-        WeatherService.shared.getWeather(city: .brussel) { (successRequest1, resultRequest1) in
+        WeatherService.shared.getWeather(city: .getOrigin) { (successRequest1, resultRequest1) in
                 guard successRequest1 else {
                     self.showAlert(message: "Erreur de connexion")
                     return
@@ -40,7 +42,7 @@ class WeatherViewController: UIViewController {
                     self.showAlert(message: "Erreur de connexion")
                     return
                 }
-                WeatherService.shared.getWeather(city: .nyc) { (successRequest2, resultRequest2) in
+                WeatherService.shared.getWeather(city: .getDestination) { (successRequest2, resultRequest2) in
                     guard successRequest2 else {
                         self.showAlert(message: "Erreur de connexion")
                         return
@@ -63,8 +65,10 @@ class WeatherViewController: UIViewController {
     }
 
     private func updateLabel(firstCity: Weather, secondCity: Weather ) {
+        localCityNameLabel.text = firstCity.name
         localTemperatureLabel.text = "\(String(firstCity.main.temp))°C"
         localConditionsLabel.text = firstCity.prettyDescriptionString
+        destinationCityNameLabel.text = secondCity.name
         destinationTemperatureLabel.text = "\(String(secondCity.main.temp))°C"
         destinationConditionsLabel.text = secondCity.prettyDescriptionString
     }

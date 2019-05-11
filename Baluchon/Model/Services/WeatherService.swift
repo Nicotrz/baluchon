@@ -10,10 +10,9 @@ import Foundation
 
 class WeatherService {
 
-    // MARK: Enum
-    enum City: String {
-        case brussel = "2800866"
-        case nyc = "5128581"
+    enum City {
+        case getOrigin
+        case getDestination
     }
 
     // MARK: Singleton Property
@@ -29,6 +28,8 @@ class WeatherService {
         self.weatherSession = weatherSession
     }
 
+    var originCity = "2800866"
+    var destinationCity = "5128581"
     // MARK: private properties
 
     // The URL for the request
@@ -64,8 +65,15 @@ class WeatherService {
 
     // Creating the request from the URL with accessKey
     private func createWeatherRequest(city: City) -> URLRequest {
-        requestURL += "?id=\(city.rawValue)&appid=\(accessKey)&lang=fr&units=metric"
-        let weatherUrl = URL(string: requestURL)!
+        var cityID = "0"
+        switch city {
+        case .getOrigin:
+            cityID = originCity
+        case .getDestination:
+            cityID = destinationCity
+        }
+        let finalRequest = "\(requestURL)?id=\(cityID)&appid=\(accessKey)&lang=fr&units=metric"
+        let weatherUrl = URL(string: finalRequest)!
         var request = URLRequest(url: weatherUrl)
         request.httpMethod = "POST"
         return request
@@ -120,6 +128,5 @@ class WeatherService {
             }
         }
         task?.resume()
-        WeatherService.shared = WeatherService()
     }
 }
