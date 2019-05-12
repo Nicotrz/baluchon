@@ -10,7 +10,7 @@ import Foundation
 
 // swiftlint:disable variable_name
 struct Weather: Codable {
-
+    
     // This function translate the result in a version suitable for the label
     // ( example: It&#39;s become It's )
     var prettyDescriptionString: String {
@@ -31,31 +31,32 @@ struct Weather: Codable {
         }
         return resultToSend
     }
-    let coord: Coord
+    let coord: Coord?
     let weather: [WeatherElement]
-    let base: String
+    let base: String?
     let main: Main
-    let visibility: Int
-    let wind: Wind
-    let clouds: Clouds
-    let dt: Int
-    let sys: Sys
-    let id: Int
-    let name: String
-    let cod: Int
+    let visibility: Int?
+    let wind: Wind?
+    let clouds: Clouds?
+    let dt: Int?
+    let sys: Sys?
+    let id: Int?
+    let name: String?
+    let cod: Int?
 }
 
 struct Clouds: Codable {
-    let all: Int
+    let all: Int?
 }
 
 struct Coord: Codable {
-    let lon, lat: Double
+    let lon, lat: Double?
 }
 
 struct Main: Codable {
     let temp: Double
-    let pressure, humidity: Int
+    let pressure: Double
+    let humidity: Int
     let tempMin, tempMax: Double
 
     enum CodingKeys: String, CodingKey {
@@ -66,10 +67,11 @@ struct Main: Codable {
 }
 
 struct Sys: Codable {
-    let type, id: Int
-    let message: Double
-    let country: String
-    let sunrise, sunset: Int
+    let type: Int?
+    let id: Int?
+    let message: Double?
+    let country: String?
+    let sunrise, sunset: Int?
 }
 
 struct WeatherElement: Codable {
@@ -78,5 +80,6 @@ struct WeatherElement: Codable {
 }
 
 struct Wind: Codable {
-    let speed, deg: Double
+    let speed: Double?
+    let deg: Double?
 }

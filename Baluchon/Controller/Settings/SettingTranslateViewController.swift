@@ -30,6 +30,10 @@ class SettingTranslateViewController: UIViewController, UIPickerViewDataSource, 
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard pickerOriginPickerViewController.selectedRow(inComponent: 0) != pickerDestinationPickerViewController.selectedRow(inComponent: 0) else {
+            showAlert(message: "Les deux langues ne peuvent pas être identiques!")
+            return
+        }
         if pickerView == pickerOriginPickerViewController {
             TranslateService.shared.originLanguage =
                 language[pickerOriginPickerViewController.selectedRow(inComponent: 0)].code
@@ -38,4 +42,13 @@ class SettingTranslateViewController: UIViewController, UIPickerViewDataSource, 
                 language[pickerDestinationPickerViewController.selectedRow(inComponent: 0)].code
         }
     }
+
+    // Display an alert with the message of our choices
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+
 }

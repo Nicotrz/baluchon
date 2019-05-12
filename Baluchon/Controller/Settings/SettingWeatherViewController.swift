@@ -14,8 +14,8 @@ class SettingWeatherViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var pickerDestinationPickerViewController: UIPickerView!
 
     override func viewDidLoad() {
-        pickerOriginPickerViewController.selectRow(29, inComponent: 0, animated: true)
-        pickerDestinationPickerViewController.selectRow(4, inComponent: 0, animated: true)
+        pickerOriginPickerViewController.selectRow(38, inComponent: 0, animated: true)
+        pickerDestinationPickerViewController.selectRow(122, inComponent: 0, animated: true)
         super.viewDidLoad()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -113,18 +113,28 @@ class WeatherService {
         task = weatherSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
+                    print("Error data or error nil")
                     callback(false, nil)
                     return
                 }
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("errror response")
                     callback(false, nil)
                     return
                 }
-                guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
+          //      guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
+         //          print("error decoder")
+          //         callback(false, nil)
+           //        return
+           //    }
+           //     callback(true, responseJSON)
+                do {
+                let responseJSON = try JSONDecoder().decode(Weather.self, from: data)
+                    callback(true, responseJSON)
+               } catch let error as NSError {
+                    print("\(error)")
                     callback(false, nil)
-                    return
                 }
-                callback(true, responseJSON)
             }
         }
         task?.resume()
