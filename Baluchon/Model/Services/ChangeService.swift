@@ -10,6 +10,15 @@ import Foundation
 
 class ChangeService {
 
+    // MARK: Enumeration
+
+    // Differents return of ErrorCase possibles
+    enum ErrorCase {
+        case requestSuccessfull
+        case alreadyRefreshed
+        case networkError
+    }
+
     // MARK: Singleton Property
     static var shared = ChangeService()
 
@@ -21,15 +30,6 @@ class ChangeService {
     // init for testing purposes
     init(changeSession: URLSession) {
         self.changeSession = changeSession
-    }
-
-    // MARK: Enumeration
-
-    // Differents return of ErrorCase possibles
-    enum ErrorCase {
-        case requestSuccessfull
-        case alreadyRefreshed
-        case networkError
     }
 
     // MARK: private properties
@@ -44,7 +44,6 @@ class ChangeService {
     private var changeSession = URLSession(configuration: .default)
 
     // The Rate object to collect current rates
-    //private var rates: Rate?
     private var rates: Rate?
 
     // Retrieve the accessKey from the keys.plist file
@@ -75,6 +74,12 @@ class ChangeService {
         return todayDate == ChangeService.shared.rates?.date
     }
 
+    // The currency of the starting field
+    private var startingCurrency = "EUR"
+
+    // The currency of the destination ( result )
+    private var destinationCurrency = "USD"
+
     // Contain the today date
     private var today = Date()
 
@@ -84,9 +89,6 @@ class ChangeService {
     var ratesEnabled: Bool {
         return ChangeService.shared.rates != nil
     }
-
-    var startingCurrency = "EUR"
-    var destinationCurrency = "USD"
 
     // MARK: Private methods
 
@@ -99,12 +101,11 @@ class ChangeService {
         return request
     }
 
-    // Converting a Double number to a pretty number with the USD format
+    // Converting a Double number to a pretty number with the BE format
     private func convertToClearNumber(toConvert number: Double) -> String {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .decimal
-        // localize to your grouping and decimal separator
         currencyFormatter.locale = Locale(identifier: "fr_BE")
         var destinationShortDescription = String()
         for currency in devises where currency.code == destinationCurrency {
@@ -115,6 +116,21 @@ class ChangeService {
     }
 
     // MARK: Public methods
+
+    // Set the Starting Currency
+    func setCurrencies(fromCurrency: String) {
+        startingCurrency = fromCurrency
+    }
+
+    // Get the Starting Currency
+    func getStartingCurrency() -> String {
+    return startingCurrency
+    }
+
+    // Set the Destination Currency
+    func setCurrencies(toCurrency: String) {
+        destinationCurrency = toCurrency
+    }
 
     // Refresh the ChangeRate. We need a closure on argument with:
     // - Type of error for result purpose

@@ -20,7 +20,8 @@ class ChangeViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
 
     override func viewWillAppear(_ animated: Bool) {
-        for currency in devises where currency.code == ChangeService.shared.startingCurrency {
+        for currency in devises
+            where currency.code == ChangeService.shared.getStartingCurrency() {
             startingCurrencyLabel.text = currency.descr_short
         }
         super.viewWillAppear(animated)

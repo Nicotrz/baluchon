@@ -31,11 +31,13 @@ class SettingWeatherViewController: UIViewController, UIPickerViewDataSource, UI
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerOriginPickerViewController {
-            WeatherService.shared.originCity =
+            let originCity =
                 city[pickerOriginPickerViewController.selectedRow(inComponent: 0)].cityID
+            WeatherService.shared.setOriginCity(originCity: originCity)
         } else {
-            WeatherService.shared.destinationCity =
+            let destinationCity =
                 city[pickerDestinationPickerViewController.selectedRow(inComponent: 0)].cityID
+            WeatherService.shared.setDestinationCity(destinationCity: destinationCity)
         }
     }
 }

@@ -30,16 +30,19 @@ class SettingTranslateViewController: UIViewController, UIPickerViewDataSource, 
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard pickerOriginPickerViewController.selectedRow(inComponent: 0) != pickerDestinationPickerViewController.selectedRow(inComponent: 0) else {
+        guard pickerOriginPickerViewController.selectedRow(inComponent: 0) !=
+            pickerDestinationPickerViewController.selectedRow(inComponent: 0) else {
             showAlert(message: "Les deux langues ne peuvent pas être identiques!")
             return
         }
         if pickerView == pickerOriginPickerViewController {
-            TranslateService.shared.originLanguage =
+            let originLanguage =
                 language[pickerOriginPickerViewController.selectedRow(inComponent: 0)].code
+            TranslateService.shared.setOriginLanguage(fromLanguage: originLanguage)
        } else {
-            TranslateService.shared.destinationLanguage =
+            let destinationLangage =
                 language[pickerDestinationPickerViewController.selectedRow(inComponent: 0)].code
+            TranslateService.shared.setDestinationLanguage(toLanguage: destinationLangage)
         }
     }
 

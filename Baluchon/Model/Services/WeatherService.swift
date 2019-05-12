@@ -10,6 +10,11 @@ import Foundation
 
 class WeatherService {
 
+    // MARK: Enumeration
+
+    // This enumeration is to know if
+    // We are fetching the weather
+    // from the origin or the destination City
     enum City {
         case getOrigin
         case getDestination
@@ -28,8 +33,6 @@ class WeatherService {
         self.weatherSession = weatherSession
     }
 
-    var originCity = "2800866"
-    var destinationCity = "5128581"
     // MARK: private properties
 
     // The URL for the request
@@ -44,6 +47,12 @@ class WeatherService {
     // The Rate object to collect current rates
     //private var rates: Rate?
     private var request: Weather?
+
+    // The origin City ID
+    private var originCity = "2800866"
+
+    // The destination City ID
+    private var destinationCity = "5128581"
 
     // Retrieve the accessKey from the keys.plist file
     // Please note: the software cannot work without it
@@ -64,6 +73,7 @@ class WeatherService {
     // MARK: Private methods
 
     // Creating the request from the URL with accessKey
+    // we know witch City to fetch thanks to the city argument
     private func createWeatherRequest(city: City) -> URLRequest {
         var cityID = "0"
         switch city {
@@ -79,62 +89,39 @@ class WeatherService {
         return request
     }
 
-    // This function translate the result in a version suitable for the label
-    // ( example: It&#39;s become It's )
-    private func convertTextIntoAPrettyString(textToConvert: String) -> [Bool: String] {
-        var resultToSend = ""
-        guard let encodedData = textToConvert.data(using: .utf8) else {
-            return [false: ""]
-        }
-
-        let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.html,
-            .characterEncoding: String.Encoding.utf8.rawValue
-        ]
-
-        do {
-            let attributedString = try NSAttributedString(
-                data: encodedData, options: attributedOptions, documentAttributes: nil)
-            resultToSend = attributedString.string
-        } catch {
-            return [false: ""]
-        }
-        return [true: resultToSend]
-    }
-
     // MARK: Public methods
 
-    // Get the translation. We need a closure on argument with:
+    // Set the origin city
+    func setOriginCity(originCity: String) {
+        self.originCity = originCity
+    }
+
+    // Set the destination city
+    func setDestinationCity(destinationCity: String) {
+        self.destinationCity = destinationCity
+    }
+
+    // Get the weather. We need a closure on argument with:
     // - request success ( yes or no )
-    // - String? contain the result in form of a pretty string
+    // - Weather? contain the result in form of a Weather object
     func getWeather(city: City, callback: @escaping (Bool, Weather?) -> Void) {
         let request = createWeatherRequest(city: city)
         task?.cancel()
         task = weatherSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
-                    print("Error data or error nil")
                     callback(false, nil)
                     return
                 }
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    print("errror response")
                     callback(false, nil)
                     return
                 }
-          //      guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
-         //          print("error decoder")
-          //         callback(false, nil)
-           //        return
-           //    }
-           //     callback(true, responseJSON)
-                do {
-                let responseJSON = try JSONDecoder().decode(Weather.self, from: data)
-                    callback(true, responseJSON)
-               } catch let error as NSError {
-                    print("\(error)")
-                    callback(false, nil)
-                }
+                guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
+                     callback(false, nil)
+                     return
+                 }
+                callback(true, responseJSON)
             }
         }
         task?.resume()

@@ -10,6 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    // MARK: Outlets
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var localTemperatureLabel: UILabel!
     @IBOutlet weak var localConditionsLabel: UILabel!
@@ -19,19 +20,32 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var destinationCityNameLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
+    // MARK: Public methods
+
+    // Override on viewDidLoad to fetch the weather at the loading
     override func viewDidLoad() {
         refreshWeather()
         super.viewDidLoad()
     }
+
+    // MARK: Actions
+
+    // The refresh button has been pressed
     @IBAction func refreshButtonPressed(_ sender: Any) {
         refreshWeather()
     }
 
+    // MARK: Private methpds
+
+    // (des)activate the loading interface
     private func toggleLoadingInterface(activate: Bool) {
         refreshButton.isHidden = activate
         loadingActivityIndicator.isHidden = !activate
     }
 
+    // Refresh the weather. First we fetch the origin weather
+    // In case of success, we then fetch the destination
+    // Finally, if the second one is successfull, we set the result on labels
     private func refreshWeather() {
         WeatherService.shared.getWeather(city: .getOrigin) { (successRequest1, resultRequest1) in
                 guard successRequest1 else {
@@ -64,6 +78,7 @@ class WeatherViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    // Updating all the labels with Weather results objects
     private func updateLabel(firstCity: Weather, secondCity: Weather ) {
         localCityNameLabel.text = firstCity.name
         localTemperatureLabel.text = "\(String(firstCity.main.temp))°C"
@@ -72,4 +87,5 @@ class WeatherViewController: UIViewController {
         destinationTemperatureLabel.text = "\(String(secondCity.main.temp))°C"
         destinationConditionsLabel.text = secondCity.prettyDescriptionString
     }
+
 }

@@ -23,8 +23,6 @@ class TranslateService {
         self.translateSession = translateSession
     }
 
-    var originLanguage = "fr"
-    var destinationLanguage = "en"
     // MARK: private properties
 
     // The URL for the request
@@ -39,6 +37,12 @@ class TranslateService {
     // The Rate object to collect current rates
     //private var rates: Rate?
     private var request: Translate?
+
+    // The origin language for translation
+    private var originLanguage = "fr"
+
+    // The destination language for translation
+    private var destinationLanguage = "en"
 
     // Retrieve the accessKey from the keys.plist file
     // Please note: the software cannot work without it
@@ -60,7 +64,8 @@ class TranslateService {
 
     // Creating the request from the URL with accessKey
     private func createTranslateRequest(textToTranslate: String) -> URLRequest {
-        let newRequestURL = "\(requestURL)?key=\(accessKey)&source=\(originLanguage)&target=\(destinationLanguage)&q=\(textToTranslate)"
+        let newRequestURL =
+        "\(requestURL)?key=\(accessKey)&source=\(originLanguage)&target=\(destinationLanguage)&q=\(textToTranslate)"
         let translateUrl = URL(string: newRequestURL)!
         var request = URLRequest(url: translateUrl)
         request.httpMethod = "POST"
@@ -76,10 +81,10 @@ class TranslateService {
 
     // This function translate the result in a version suitable for the label
     // ( example: It&#39;s become It's )
-    private func convertTextIntoAPrettyString(textToConvert: String) -> [Bool: String] {
+    private func convertTextIntoAPrettyString(textToConvert: String) -> (success: Bool, stringResult: String) {
         var resultToSend = ""
         guard let encodedData = textToConvert.data(using: .utf8) else {
-            return [false: ""]
+            return (false, "")
         }
 
         let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: Any] = [
@@ -92,12 +97,22 @@ class TranslateService {
                 data: encodedData, options: attributedOptions, documentAttributes: nil)
             resultToSend = attributedString.string
         } catch {
-            return [false: ""]
+            return (false, "")
         }
-        return [true: resultToSend]
+        return (true, resultToSend)
     }
 
     // MARK: Public methods
+
+    // Set origin language
+    func setOriginLanguage(fromLanguage: String) {
+        self.originLanguage = fromLanguage
+    }
+
+    // Set destination language
+    func setDestinationLanguage(toLanguage: String) {
+        self.destinationLanguage = toLanguage
+    }
 
     // Get the translation. We need a closure on argument with:
     // - request success ( yes or no )
@@ -122,14 +137,13 @@ class TranslateService {
                 }
                 let resultConvert = self.convertTextIntoAPrettyString(
                     textToConvert: responseJSON.data.translations[0].translatedText)
-                guard resultConvert != [false: ""] else {
+                guard resultConvert.success else {
                     callback(false, nil)
                     return
                 }
-                callback(true, resultConvert[true])
+                callback(true, resultConvert.stringResult)
             }
         }
         task?.resume()
-     //   TranslateService.shared = TranslateService()
     }
 }

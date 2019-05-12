@@ -31,11 +31,11 @@ class SettingChangeViewController: UIViewController, UIPickerViewDataSource, UIP
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == currencyOriginPickerView {
-            ChangeService.shared.startingCurrency =
-                devises[currencyOriginPickerView.selectedRow(inComponent: 0)].code
+            let fromCurrency = devises[currencyOriginPickerView.selectedRow(inComponent: 0)].code
+            ChangeService.shared.setCurrencies(fromCurrency: fromCurrency)
         } else {
-            ChangeService.shared.destinationCurrency =
-                devises[currencyDestinationPickerView.selectedRow(inComponent: 0)].code
+            let toCurrency = devises[currencyDestinationPickerView.selectedRow(inComponent: 0)].code
+            ChangeService.shared.setCurrencies(toCurrency: toCurrency)
         }
     }
 

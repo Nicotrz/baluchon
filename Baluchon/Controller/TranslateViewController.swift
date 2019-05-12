@@ -10,37 +10,46 @@ import UIKit
 
 class TranslateViewController: UIViewController {
 
+    // MARK: Outlets
     @IBOutlet weak var translateTextField: UITextField!
     @IBOutlet weak var translateButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
+    // MARK: Private properties
+
+    // Is the TextField properly filled?
     private var isTextFieldFilled: Bool {
         return translateTextField.text != ""
     }
+
+    // MARK: Actions
+
+    // The user pressed anywhere on screen
     @IBAction func userTappedOnScreen(_ sender: Any) {
         dismissKeyboard()
     }
 
+    // The usser pressed on the translate button or "GO" on the keyboard
     @IBAction func userPressedTranslate(_ sender: Any) {
         dismissKeyboard()
         fetchTranslation()
     }
 
-    @IBAction func userPressedGoOnKeyboard(_ sender: Any) {
-        dismissKeyboard()
-        fetchTranslation()
-    }
+    // MARK: Private methods
 
+    // Function to dismiss the keyboard
     private func dismissKeyboard() {
         translateTextField.resignFirstResponder()
     }
 
+    // Function to (des)activate the loading interface
     private func switchLoadingInterface(activate: Bool) {
         translateButton.isHidden = activate
         loadingActivityIndicator.isHidden = !activate
     }
 
+    // Function for fetching the translation from the model
     private func fetchTranslation() {
         guard isTextFieldFilled else {
             showAlert(message: "Veuillez introduire la phrase à traduire")
@@ -64,5 +73,4 @@ class TranslateViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-
 }
