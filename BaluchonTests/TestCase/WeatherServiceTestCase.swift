@@ -86,5 +86,7 @@
             WeatherService.shared.setOriginCity(originCity: "7303514")
             XCTAssertEqual(WeatherService.shared.getOriginCity(), "7303514")
             XCTAssertEqual(WeatherService.shared.getDestinationCity(), "2800866")
+            XCTAssertEqual(WeatherService.shared.getCityName(cityType: .getOrigin), "Delap-Uliga-Darrit, Îles Marshall")
+            XCTAssertEqual(WeatherService.shared.getCityName(cityType: .getDestination), "Bruxelles, Belgique")
         }
 }

@@ -80,10 +80,10 @@ class WeatherViewController: UIViewController {
 
     // Updating all the labels with Weather results objects
     private func updateLabel(firstCity: Weather, secondCity: Weather ) {
-        localCityNameLabel.text = firstCity.name
+        localCityNameLabel.text = WeatherService.shared.getCityName(cityType: .getOrigin)
         localTemperatureLabel.text = "\(String(firstCity.main.temp))°C"
         localConditionsLabel.text = firstCity.prettyDescriptionString
-        destinationCityNameLabel.text = secondCity.name
+        destinationCityNameLabel.text = WeatherService.shared.getCityName(cityType: .getDestination)
         destinationTemperatureLabel.text = "\(String(secondCity.main.temp))°C"
         destinationConditionsLabel.text = secondCity.prettyDescriptionString
     }

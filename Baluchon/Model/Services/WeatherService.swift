@@ -116,6 +116,21 @@ class WeatherService {
         return destinationCity
     }
 
+    // Get the name of City / Country of any city based on the ID
+    func getCityName(cityType: City) -> String {
+        let cityID: String
+        switch cityType {
+        case .getDestination:
+            cityID = destinationCity
+        case .getOrigin:
+            cityID = originCity
+        }
+        for cityElement in city where cityID == cityElement.cityID {
+            return "\(cityElement.city), \(cityElement.country)"
+        }
+        return ""
+    }
+
     // Get the weather. We need a closure on argument with:
     // - request success ( yes or no )
     // - Weather? contain the result in form of a Weather object
