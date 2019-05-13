@@ -104,9 +104,24 @@ class TranslateService {
 
     // MARK: Public methods
 
+    // Reset the Shared object
+    func resetShared() {
+    TranslateService.shared = TranslateService()
+    }
+
     // Set origin language
     func setOriginLanguage(fromLanguage: String) {
         self.originLanguage = fromLanguage
+    }
+
+    // Get the origin language
+    func getOriginLanguage() -> String {
+        return originLanguage
+    }
+
+    // Get the destination language
+    func getDestinationLanguage() -> String {
+        return destinationLanguage
     }
 
     // Set destination language

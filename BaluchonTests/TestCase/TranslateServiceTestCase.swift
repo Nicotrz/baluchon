@@ -12,6 +12,11 @@ class TranslateServiceTestCase: XCTestCase {
 
     var fakeTranslationData = FakeData(typeOfData: "Translation")
 
+    override func setUp() {
+        TranslateService.shared.resetShared()
+        super.setUp()
+    }
+
     func testGetTranslationShouldPostFailedCallbackIfError() {
         let translateService = TranslateService(
             translateSession: URLSessionFake(data: nil, response: nil, error: fakeTranslationData.error))
@@ -73,6 +78,13 @@ class TranslateServiceTestCase: XCTestCase {
             expectaction.fulfill()
         }
         wait(for: [expectaction], timeout: 0.01)
+    }
+
+    func testWhenSettingLanguagesThenLanguagesShouldBeSet() {
+        TranslateService.shared.setOriginLanguage(fromLanguage: "de")
+        TranslateService.shared.setDestinationLanguage(toLanguage: "fr")
+        XCTAssertEqual(TranslateService.shared.getOriginLanguage(), "de")
+        XCTAssertEqual(TranslateService.shared.getDestinationLanguage(), "fr")
     }
 
 }
