@@ -91,14 +91,29 @@ class WeatherService {
 
     // MARK: Public methods
 
+    // Reset the Shared object
+    func resetShared() {
+        WeatherService.shared = WeatherService()
+    }
+
     // Set the origin city
     func setOriginCity(originCity: String) {
         self.originCity = originCity
     }
 
+    // Get the origin city
+    func getOriginCity() -> String {
+        return originCity
+    }
+
     // Set the destination city
     func setDestinationCity(destinationCity: String) {
         self.destinationCity = destinationCity
+    }
+
+    // Get the destination city
+    func getDestinationCity() -> String {
+        return destinationCity
     }
 
     // Get the weather. We need a closure on argument with:
