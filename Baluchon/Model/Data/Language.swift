@@ -8,6 +8,11 @@
 
 import Foundation
 
+// This constant contain all the available languages
+// For the translation
+// code: code for the API
+// descr: description to show on the app
+
 let language: [(code: String, descr: String)] =
 
     [("af", "Afrikaans"),

@@ -31,6 +31,7 @@ struct Weather: Codable {
         }
         return resultToSend
     }
+
     let coord: Coord?
     let weather: [WeatherElement]
     let base: String?

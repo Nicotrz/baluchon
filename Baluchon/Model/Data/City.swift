@@ -8,6 +8,11 @@
 
 import Foundation
 
+// This constant contain all the city availables for weather
+// city: the name of the city
+// country: the name of the Country
+// cityID: The ID of the city for the API
+
 // swiftlint:disable:next large_tuple
 let city: [(city: String, country: String, cityID: String)] =
 [("Abou Dabi", "Émirats arabes unis", "292968"),

@@ -117,6 +117,11 @@ class ChangeService {
 
     // MARK: Public methods
 
+    // Reset the object
+    func resetShared() {
+        ChangeService.shared = ChangeService()
+    }
+
     // Set the Starting Currency
     func setCurrencies(fromCurrency: String) {
         startingCurrency = fromCurrency
@@ -125,6 +130,11 @@ class ChangeService {
     // Get the Starting Currency
     func getStartingCurrency() -> String {
     return startingCurrency
+    }
+
+    // Get the destination Currency
+    func getDestinationCurrency() -> String {
+        return destinationCurrency
     }
 
     // Set the Destination Currency
@@ -187,5 +197,4 @@ class ChangeService {
         let resultToSend = Double(round(100*toConvert/base*reference)/100)
         return convertToClearNumber(toConvert: resultToSend)
     }
-
 }

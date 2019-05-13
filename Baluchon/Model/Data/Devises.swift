@@ -8,6 +8,12 @@
 
 import Foundation
 
+// This constant contain an array with all
+// The available currency on the app
+// code: code currency to send for the api
+// descr: description for the picker
+// descr_short: symbol or name to show on the app
+
 // swiftlint:disable:next large_tuple
 let devises: [(code: String, descr: String, descr_short: String)] = [
     ("AFN", "Afghani", "؋"),
