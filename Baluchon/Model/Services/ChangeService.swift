@@ -111,7 +111,6 @@ class ChangeService {
         for currency in devises where currency.code == destinationCurrency {
             destinationShortDescription = currency.descr_short
         }
-        // We'll force unwrap with the !, if you've got defined data you may need more error checking
         return "\(currencyFormatter.string(from: NSNumber(value: number))!) \(destinationShortDescription)"
     }
 
