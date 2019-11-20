@@ -83,8 +83,9 @@ class URLSessionDataTaskFake: URLSessionDataTask {
 }
 ```
 
-```Swift
 Then we can just simulate the response from the server on the tests:
+
+```Swift
     func testRefreshChangeShouldPostFailedCallbackIfIncorrectData() {
         let changeService = ChangeService(
             changeSession: URLSessionFake(
